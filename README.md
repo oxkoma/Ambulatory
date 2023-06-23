@@ -1,2 +1,0 @@
-# Ambulatory
-laravel project
