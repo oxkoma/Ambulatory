@@ -1,0 +1,145 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+  'Segoe UI Symbol';
+}
+
+.container {
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+	max-width: 710px;
+	margin: 0 auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+	max-width: 1050px;
+	margin: 0 auto;
+  }
+}
+
+.itc-slider {
+  overflow: hidden;
+  padding-bottom: 35px;
+}
+
+.itc-slider-wrapper {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+@media (min-width: 768px) {
+  .itc-slider-item {
+	flex: 0 0 50%;
+	max-width: 50%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .itc-slider-item {
+	flex: 0 0 33.3333333333%;
+	max-width: 33.3333333333%;
+  }
+}
+
+.card {
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.card-header {
+  position: relative;
+}
+
+.card-img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.card-section {
+  position: absolute;
+  bottom: 6px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 6px 10px;
+  font-size: 14px;
+  border-radius: 12px;
+  line-height: 1;
+}
+
+.card-title {
+  background: #fafafa;
+  color: #424242;
+  white-space: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.3;
+  padding: 10px 15px;
+  margin: 0;
+  height: 72px;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: #fafafa;
+  padding: 10px 15px 15px;
+  color: #616161;
+}
+
+.card-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.card-author {
+  margin-left: 6px;
+}
+
+.card-icon {
+  margin-left: auto;
+  width: 18px;
+  max-height: 20px;
+}
+
+.card-views {
+  margin-left: 6px;
+}
+
+.itc-slider-btn {
+  background-color: unset;
+}
+
+.itc-slider-btn:hover,
+.itc-slider-btn:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.itc-slider-indicators {
+  bottom: 0;
+}
+
+.itc-slider-indicator {
+  background-color: #eee;
+}
+
+.itc-slider-indicator-active {
+  background-color: #757575;
+}

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./css/itc-slider.css">
+	<link rel="stylesheet" href="./css/swiper-bundle.min.css">
+	<title>Document</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<!--top-bar-->
+		<div class="row">
+			<div class="col-md-6 top-bar">
+				<div class="nav-bar dropdown dropdown-nav">
+					<button class="btn-dropdown"><span>м. Дніпро</span><i class="arrow_down"></i></button>
+						<ul class="dropdown-ul">
+							<div class="dropdown-child">
+								<li><a class="dropdown-item dropdown-child-item" href="#">площа Соборна, 5</a><i class="arrow_right"></i></li>
+								<li><a class="dropdown-item dropdown-child-item" href="#">пр. Гагаріна, 99</a><i class="arrow_right"></i></li>
+								<li><a class="dropdown-item dropdown-child-item" href="#">Запорізьке шосе, 2А</a><i class="arrow_right"></i></li>
+								<li><a class="dropdown-item dropdown-child-item" href="#">вул. Робоча, 146</a><i class="arrow_right"></i></li>
+								<li><a class="dropdown-item dropdown-child-item" href="#">вул. Калинова, 26</a><i class="arrow_right"></i></li>
+								<li><a class="dropdown-item dropdown-child-item" href="#">вул. Любарського, 25</a><i class="arrow_right"></i></li>
+							</div>
+						</ul>
+				</div>
+			</div>
+			<div class="col-md-6 top-bar">
+				<div class="nav-bar dropdown dropdown-nav">
+					<button class="btn-dropdown"><span>(099) 298-35-45</span><i class="arrow_down"></i></button>
+						<ul class="dropdown-ul">
+							<div class="dropdown-child">
+								<li><a class="dropdown-item dropdown-child-item" href="#">(099) 298-35-45</a><i class="arrow_right"></i></li>
+								<li><a class="dropdown-item dropdown-child-item" href="#">(096) 395-51-07</a><i class="arrow_right"></i></li>
+								<li><a class="dropdown-item dropdown-child-item" href="#">(056) 373-70-02</a><i class="arrow_right"></i></li>
+								<li><a class="dropdown-item dropdown-child-item" href="#">(0562) 36-19-50</a><i class="arrow_right"></i></li>
+							</div>	
+						</ul>
+				</div>
+			</div>
+		</div>
+		<!--main-menu-->	
+		<div class="row">
+			<nav class="navbar navbar-expand-lg bg-body-tertiary navbar-height">
+				<div class="container-fluid navbar-container">
+					<div class="col-md-2">
+						<a class="navbar-brand" href="#">Navbar</a>
+				  		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+				  		</button> 
+					</div>
+					<div class="col-md-6 collapse navbar-collapse collapse navbar-flex" id="navbarSupportedContent">
+					<ul class="navbar-nav navigate mb-2 mb-lg-0">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Послуги
+							</a>
+							<i class="arrow_down"></i>
+							<div class="dropdown-menu">
+								<ul>
+									<h4 class="h4-menu">Поліклініка</h4>
+									<hr class="hr">
+									<li><a class="dropdown-item dropdown-child-item" href="#">Прийом лікарів</a><i class="arrow_right"></i></li>
+									<li><a class="dropdown-item dropdown-child-item" href="#">Онлайн-консультації</a><i class="arrow_right"></i></li>
+									<li><a class="dropdown-item dropdown-child-item" href="#">Вакцинація</a><i class="arrow_right"></i></li>
+									<h4 class="h4-menu">Діагностика</h4>
+									<hr class="hr">
+									<li><a class="dropdown-item dropdown-child-item" href="#">Аналізи</a><i class="arrow_right"></i></li>
+									<li><a class="dropdown-item dropdown-child-item" href="#">УЗД</a><i class="arrow_right"></i></li>
+									<li><a class="dropdown-item dropdown-child-item" href="#">Безоплатні дослідження</a><i class="arrow_right"></i></li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Ціни</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Про нас
+							</a>
+							<i class="arrow_down"></i>
+							<div class="dropdown-menu">
+								<ul >
+									<li><a class="dropdown-item dropdown-child-item" href="#">Ліцензії, сертифікати</a><i class="arrow_right"></i></li>
+									<li><a class="dropdown-item dropdown-child-item" href="#">Колектив</a><i class="arrow_right"></i></li>
+									<li><a class="dropdown-item dropdown-child-item" href="#">Контакти</a><i class="arrow_right"></i></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-4 search-flex">
+					<form class="search-container" action="/search" method="POST">
+						<div class="search-group">
+							<input id="search-box" type="text" class="search-box" name="q" />
+							<label for="search-box"><span class="search-icon"><img src="./assets/search.png"></span></label>
+							<input type="submit" id="search-submit" />
+						</div>						
+					</form>
+					<a href="#"><img src="./assets/office.png" alt=""></a>
+					<a class="btn btn-record" href="#">Запис на прийом</a>
+				</div>
+			<!-- </div> -->
+			</nav>
+		</div>
+		<!--MAIN CONTEINER-->
+		<main>
+			<!--section breadcrumbs-->
+			<section>
+				<div class="row breadcrumbs">
+					<div class="container-fluid ">
+						<div class="breadcrumbs-wrapper">
+							<ul class="breadcrumbs-ul">
+								<li><a><img src="./assets/home.png" alt=""></a></li>
+								<li><i class="arrow-li"></i>Прийом лікарів</li>
+							</ul>
+						</div>
+						
+					</div>
+				</div>
+			</section>
+			<!--section title-->
+			<section>
+				<div class="row title">
+					<div class="container-fluid">
+						<div class="title-wrapper">
+							<h1>Прийом лікарів</h1>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--section select-->
+			<section>
+				<div class="row select-container">
+					<div class="container-fluid">
+						<div class="select-items">
+							<div class="select-item">
+								<div class="select-header">
+									<h4>Знайти лікаря</h4>
+								</div>
+								<div class="search-doctor">
+									<form name="search-doctor" method="POST" class="select-body">
+									
+									<input type="text" class="search-input">
+									<input type="submit" value="Знайти" class="btn-green">
+									
+								</form>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--section doctors-card-->
+			<section>
+				<div class="row doctors">
+					<div class="container-fluid">
+						<div class="doctor-card-list">
+							<div class="doctor-card-wrapper">
+								<div class="doctor-card-content">
+									<div class="doctor-card-online">
+										<a href="" class="btn-blink"><img src="./assets/vector-online.png"></a>
+									</div>
+									<div class="doctor-card-image">
+										<img src="./assets/kovalenko.png" alt="">
+									</div>
+									<div class="doctor-card-main">
+										<h3>Коваленко Лілія Володимирівна</h3>
+										<p>Дерматовенеролог</p>
+										<p>Кваліфікаційна категорія: <span>Вища</span></p>
+										<p>Стаж: <span>17 років</span></p>
+									</div>
+								</div>
+							</div>
+							<div class="doctor-card-slots">
+								<div class="doctor-slot">
+									<div class="doctor-slot-title">
+										<h4> Попередній запис </h4>
+									</div>
+									<div class="doctor-slot-description">
+										<span>Оберіть бажаний час прийому та чекайте підтвердження</span>
+									</div>
+									<form action="" name="appoint-form" class="appoint-form" method="POST">
+										<div class="doctor-slot-date">
+											<label for="start">Оберіть дату </label>
+											<input type="date" id="start" name="trip-start"
+												value="date"
+												min="2023-05-22" max="2023-08-22">
+										</div>
+									
+										<div class="doctor-slot-address">
+											<span>Оберіть амбулаторію</span>	
+											<div class="doctor-slot-select-address">
+											<select name="address" id="doc-address" class="slot-select-addres">
+												<option value="1">площа Соборна, 5</option>
+												<option value="2">пр. Гагаріна, 99</option>
+												<option value="3">Запорізьке шосе, 2А</option>
+												<option value="4">вул. Робоча, 146</option>
+												<option value="5">пр. Героїв, 32</option>
+												<option value="6">вул. Любарського, 25</option>
+												<option value="7">вул. Калинова, 26</option>
+											</select>
+										</div>
+											<div class="slot-address-group">
+												<div class="group-item">
+													<input type="radio" name="address" id="address1" checked>
+													<label for="address1">площа Соборна, 5</label>
+												</div>
+												<div class="group-item">
+													<input type="radio" name="address" id="address2">
+													<label for="address2">пр. Гагаріна, 99</label>
+												</div>
+												<div class="group-item">
+													<input type="radio" name="address" id="address3">
+													<label for="address3">Запорізьке шосе, 2А</label>
+												</div>
+												<div class="group-item">
+													<input type="radio" name="address" id="address4">
+													<label for="address4">вул. Робоча, 146</label>
+												</div>
+												<div class="group-item">
+													<input type="radio" name="address" id="address5">
+													<label for="address5">пр. Героїв, 32</label>
+												</div>
+												<div class="group-item">
+													<input type="radio" name="address" id="address6">
+													<label for="address6">вул. Любарського, 25</label>
+												</div>
+												<div class="group-item">
+													<input type="radio" name="address" id="address7"> 
+													<label for="address7">вул. Калинова, 26</label>
+												</div>	
+											</div>
+										</div>
+										<div class="doctor-slot-time">
+											<span>Оберіть час</span>
+											<div class="time-items">
+												<div class="time-item">
+													<input type="radio" name="time-radio" id="time-radio1">
+													<label for="time-radio1">9:00</label>
+												</div>
+												<div class="time-item">
+													<input type="radio" name="time-radio" id="time-radio2">
+													<label for="time-radio2">9:30</label>
+												</div>
+												<div class="time-item">
+													<input type="radio" name="time-radio" id="time-radio3">
+													<label for="time-radio3">10:00</label>
+												</div>
+												<div class="time-item">
+													<input type="radio" name="time-radio" id="time-radio4">
+													<label for="time-radio4">10:30</label>
+												</div>
+												<div class="time-item">
+													<input type="radio" name="time-radio" id="time-radio5">
+													<label for="time-radio5">11:00</label>
+												</div>
+												<div class="time-item">
+													<input type="radio" name="time-radio" id="time-radio6">
+													<label for="time-radio6">11:30</label>
+												</div>
+												<div class="time-item">
+													<input type="radio" name="time-radio" id="time-radio7">
+													<label for="time-radio7">12:00</label>
+												</div>
+
+											</div>
+										</div>
+										<input type="submit" value="Відправити" name="btn-submit" class="btn-green">
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--section min-card-->
+			<!-- <section>
+				<div class="row min-card">
+					<div class="container-fluid">
+						<div class="min-card-items">
+							<div class="min-card-item">
+								<a href="#">
+									<img src="./assets/speciality.png" alt="">
+								<p class="p-title">Сімейний лікар</p>
+								</a>
+								
+							</div>
+							<div class="min-card-item">
+								<a href="#">
+									<img src="./assets/speciality.png" alt="">
+									<p class="p-title">Педіатр</p>
+								</a>
+								
+							</div>
+							<div class="min-card-item">
+								<a href="">
+									<img src="./assets/speciality.png" alt="">
+									<p class="p-title">Гомеопат</p>
+								</a>
+								
+							</div>
+							<div class="min-card-item">
+								<a href="">
+									<img src="./assets/speciality.png" alt="">
+									<p class="p-title">Акушер-гінеколог</p>
+								</a>
+							</div>
+							<div class="min-card-item">
+								<a href="#">
+									<img src="./assets/speciality.png" alt="">
+								<p class="p-title">Сімейний лікар</p>
+								</a>
+								
+							</div>
+							<div class="min-card-item">
+								<a href="#">
+									<img src="./assets/speciality.png" alt="">
+								<p class="p-title">Сімейний лікар</p>
+								</a>
+								
+							</div>
+							<div class="min-card-item">
+								<a href="#">
+									<img src="./assets/speciality.png" alt="">
+								<p class="p-title">Сімейний лікар</p>
+								</a>
+								
+							</div>
+							<div class="min-card-item">
+								<a href="#">
+									<img src="./assets/speciality.png" alt="">
+								<p class="p-title">Сімейний лікар</p>
+								</a>
+								
+							</div>
+							<div class="min-card-item">
+								<a href="#">
+									<img src="./assets/speciality.png" alt="">
+								<p class="p-title">Сімейний лікар</p>
+								</a>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</section> -->
+			<!--news section-->
+			<section>
+				<div class="row news">
+					<div class="container-fluid news-fluid">
+						<div class="card-items card-news">
+							<div class="card-item card-wrapper">
+								<div class="image-content">
+									<div class="card-image">
+										<img src="./assets/flu.png" alt="" class="card-img">
+									</div>
+								</div>
+								<div class="card-content">
+									<h3 class="card-title">Найбільш заразний штам: що відомо про новий Covid-19 та чи загрожує українцям епідемія</h3>
+									<p class="card-description">Новий штам Covid-19 поширюється по світу з блискавичною швидкістю. Вірус виявили вже у 29 країнах. Omicron XBB.1.5 став домінантним у США всього за декілька тижнів і може привести до пандемії.</p>
+									<a href="">Детальніше<i class="arrow_right"></i></a>
+								</div>
+							</div>
+							<div class="card-item card-wrapper">
+								<div class="image-content">
+									<div class="card-image">
+										<img src="./assets/flu.png" alt="" class="card-img">
+									</div>
+								</div>
+								<div class="card-content">
+									<h3 class="card-title">Найбільш заразний штам: що відомо про новий Covid-19 та чи загрожує українцям епідемія</h3>
+									<p class="card-description">Новий штам Covid-19 поширюється по світу з блискавичною швидкістю. Вірус виявили вже у 29 країнах. Omicron XBB.1.5 став домінантним у США всього за декілька тижнів і може привести до пандемії.</p>
+									<a href="">Детальніше<i class="arrow_right"></i></a>
+								</div>
+							</div>
+							<div class="card-item card-wrapper">
+								<div class="image-content">
+									<div class="card-image">
+										<img src="./assets/flu.png" alt="" class="card-img">
+									</div>
+								</div>
+								<div class="card-content">
+									<h3 class="card-title">Найбільш заразний штам: що відомо про новий Covid-19 та чи загрожує українцям епідемія</h3>
+									<p class="card-description">Новий штам Covid-19 поширюється по світу з блискавичною швидкістю. Вірус виявили вже у 29 країнах. Omicron XBB.1.5 став домінантним у США всього за декілька тижнів і може привести до пандемії.</p>
+									<a href="">Детальніше<i class="arrow_right"></i></a>
+								</div>
+							</div>
+						</div>	
+						<div class="min-card-button">
+							<a class="btn btn-white ">Поради фахівців</a>
+						</div>
+
+					</div>
+				</div>
+			</section>
+		</main>
+			<footer>
+				<!--section benefits-->
+				<section>
+					<div class="row benefits">
+						<div class="container-fluid">
+							<div class="benefits-container">
+								<div class="benefits-icon">
+									<svg>
+										<image xlink:href="./assets/Vector.png" />
+										<image xlink:href="./assets/Vector.png" x="20"/>
+									</svg>
+								</div>										
+								<div class="benefits-title">
+									<h3>Наші переваги</h3>
+								</div>
+								<div class="benefit-description-items">
+									<div class="benefits-description">
+										<div class="benefits-arrow">
+											<img src="./assets/Vector-orang.png" alt="">
+										</div>
+										<p>Висока кваліфікація фахівців</p>
+									</div>
+									<div class="benefits-description">
+										<div class="benefits-arrow">
+											<img src="./assets/Vector-orang.png" alt="">
+										</div>
+										<p>Власна лабораторія</p>
+									</div>
+									<div class="benefits-description">
+										<div class="benefits-arrow">
+											<img src="./assets/Vector-orang.png" alt="">
+										</div>
+										<p>Безболісний забір матеріалу для досліджень</p>
+									</div>
+									<div class="benefits-description">
+										<div class="benefits-arrow">
+											<img src="./assets/Vector-orang.png" alt="">
+										</div>
+										<p>Діагностичне обладнання експертного класу</p>
+									</div>
+									<div class="benefits-description">
+										<div class="benefits-arrow">
+											<img src="./assets/Vector-orang.png" alt="">
+										</div>
+										<p>Достовірні результати досліджень</p>
+									</div>
+									</div>
+								
+							</div>
+						</div>
+					</div>
+				</section>
+				<!--section contacts-->
+				<section>
+					<div class="row contact">
+						<div class="container-fluid">
+							<div class="contact-wrapper">
+								<div class="contact-items">
+									<div class="contact-item">
+										<h4>Контакти:</h4>
+										<div class="contact-hr"></div>
+										<div class="contact-address">
+											<p class="address">м. Дніпро, вул. Любарського, 25</p>
+											<div class="phone">
+												<p>(0562) 36-19-50</p>
+												<p>(056) 373-70-02</p>
+												<p>(096)395-51-07</p>
+												<p>(099) 298-35-45</p>
+											</div>
+											<p class="email">ldc@dialab.dp.ua</p>
+										</div>
+									</div>
+									<div class="contact-item">
+										<h4>Наші адреси</h4>
+										<div class="contact-hr"></div>
+										<div class="contact-address">
+											<p class="address">площа Соборна, 5</p>
+											<p class="address">пр. Гагаріна, 99</p>
+											<p class="address">Запорізьке шосе, 2А</p>
+											<p class="address">вул. Робоча, 146</p>
+											<p class="address">пр. Героїв, 32</p>
+											<p class="address">вул. Калинова, 26</p>
+											<p class="address">вул. Любарського, 25</p>
+										</div>
+										
+									</div>
+								</div>
+								<div class="contact-items">
+									<p class="info">Ліцензія МОЗ України АЕ №459359 від 14.08.2014</p>
+									<p class="info">Вартість дзвінка відповідно до тарифів Вашого оператора</p>
+								</div>
+								<hr>
+								<div class="copyright">
+									<p>Copyright © 2002-2023 Лікувально-діагностичний центр медичної академії  | Всі права захищені.<br/>Використання матеріалів дозволяється за умови посилання (для інтернет-видань - гіперпосилання).</p>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</section>
+			</footer>
+		
+	</div>
+	
+
+
+	<script src="./js/itc-slider.js" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+	<script src="./js/swiper-bundle.min.js"></script>
+	<!-- <script src="./js/swiper-script.js"></script> -->
+</body>
+</html>

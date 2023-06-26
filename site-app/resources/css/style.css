@@ -379,7 +379,8 @@ li {
   .employee,
   .post,
   .appoint,
-  .price-list {
+  .price-list,
+  .login {
 	background-image: url(../assets/dotted.png),
 					url(../assets/fill.png);
 	padding: 30px;
@@ -908,14 +909,16 @@ input[type="radio"]:checked + label:after {
 	padding: 40px;
 }
 .doctor-card-list,
-.doctor-appoint {
+.doctor-appoint,
+.login-items {
 	background-color: #E8F2F2;
 	
 	border: 1px solid #FFFFFF;
 	box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
 }
-.doctor-appoint {
+.doctor-appoint,
+.login-items {
 	padding: 24px;
 }
 .doctor-card-main {
@@ -983,11 +986,15 @@ input[type="radio"]:checked + label:after {
 	font-weight: 700;
 	text-align: center;
 }
-.appoint-form {
+.appoint-form,
+.login-form {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	gap: 1.5rem
+}
+.login-form {
+	align-items: center;
 }
 .doctor-slot-address,
 .doctor-slot-time {
@@ -1015,14 +1022,20 @@ input[type="radio"]:checked + label:after {
 	gap: 2rem;
 }
 
-.slot-contact-item {
+.slot-contact-item,
+.login-item {
 	display: flex;
-	flex-direction: row;
-	align-items: center;
-	
+	flex-direction: row;	
 }
-.slot-contact-item label {
-	/* font-weight: 700; */
+.slot-contact-item {
+	align-items: center;
+}
+.login-item {
+	align-items: flex-end;
+}
+
+.slot-contact-item label,
+.login-item label {
 	width: 200px;
 }
 form img {
@@ -1050,7 +1063,8 @@ textarea:focus-visible {
 }
 
 .slot-contact-item input, 
-.slot-contact-item textarea
+.slot-contact-item textarea,
+.login-item input
 {
 	padding: 0px 15px 0px 15px;
 	height: 40px;
@@ -1058,6 +1072,10 @@ textarea:focus-visible {
     background-color: #E8F2F2;
     border-bottom: 2px dotted #1E8186;
 	width: 250px;
+}
+.login-items a {
+	color: var(--main-color);
+	text-decoration: none;
 }
 .doctor-slot-date input {
 	width: 250px;

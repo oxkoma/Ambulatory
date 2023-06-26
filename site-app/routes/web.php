@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AmbulatoryController;
 use App\Http\Controllers\DoctorController;
@@ -8,6 +9,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\SheduleController;
 use App\Http\Controllers\SpecialityController;
 use App\Http\Controllers\PriceController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 
 
 /*
@@ -37,7 +40,29 @@ Route::get('/online', [DoctorController::class, 'showOnline'])->name('online');
 Route::get('/price', [PriceController::class, 'showAnalise'])->name('price');
 Route::get('/search-r', [PriceController::class, 'search'])->name('price-search');
 
+Route::name('user.')->group(function() {
+	Route::view('/private', 'private')->middleware('auth')->name('private');
+	
+	Route::get('/login', function() {
+		if(Auth::check()) {
+			return redirect(route('user.private'));
+		}
+		return view('auth/login');
+	})->name('login');
+	Route::post('/login', [LoginController::class, 'login']);
+	Route::get('/logout', [function() {
+		Auth::logout();
+		return redirect(route('index'));
+	}])->name('logout');
+	Route::get('/registration', function(){
+		if(Auth::check()) {
+			return redirect(route('user.private'));
+		}
+		return view('auth/registration');
+	})->name('registration');
 
+	Route::post('/registration', [RegisterController::class,'save']);
+});
 
 Route::resource('doctors', DoctorController::class);
 Route::resource('ambulatories', AmbulatoryController::class);
