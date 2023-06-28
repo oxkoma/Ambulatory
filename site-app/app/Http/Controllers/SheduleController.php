@@ -133,35 +133,7 @@ class SheduleController extends Controller
 
     }
 
-    public function selectTime(Request $request) {
-        if ($request->ajax()) {
-        
-            // foreach ($shedules as $shedule) {
-
-            //     while($shedule->date_start <= $shedule->date_end) {
-            //         for($j = $shedule->time_start; $j <= $shedule->time_end; $j = $time_interval) {
-            //             $curr_date = timestamp($shedule->date_start, $j);
-            //                DateTime::create([
-            //                     'doctor_id' => $shedules_date->doctor_id,
-            //                     'ambulatory_id' => $shedules_date->ambulatory_id,
-            //                     'full_date_appoint' => $curr_date ,
-            //                     'date_appoint' => $shedule->date_start ,
-            //                     'time_appoint' => $j,
-            //                 ]);
-            //             $curr_date = date_add($curr_date, $j.' minutes');
-            //             $j = date_parse_from_format('H:i', $curr_date);
-            //         }
-            //         $shedule->date_start = date_add($shedule->date_start , '1 days' );
-            //     }
-            // }  
-            $times = DateTime::where('ambulatory_id', $request->ambulatory_id)->where('doctor_id', $request->doctor_id)->get()->pluck('date_appont', ,'time_appoint', 'id');
-
-        }
-        
-            $data = view('site.template-parts.selecttime', compact('times'))->render();
-            return response()->json(['options'=>$data]);
-            
-    }
+   
      
 }
     

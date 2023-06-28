@@ -14,9 +14,9 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::where('category', 'like' 'admin')->get();
+        // $menus = Menu::where('category', 'like' 'admin')->get();
 
-        return view('admin.menu.index', compact('menus'));
+        // return view('admin.menu.index', compact('menus'));
     }
 
     /**

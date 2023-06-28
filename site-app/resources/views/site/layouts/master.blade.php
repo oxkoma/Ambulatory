@@ -97,6 +97,20 @@
 								</ul>
 							</div>
 						</li>
+						@if(Auth::user() && Auth::user()->usertype == 'user')
+						<li class="nav-item dropdown cab">
+							<a class="nav-link link-cab dropdown-toggle toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							{{ Auth::user()->name }}
+							</a>
+							<i class="arrow_down"></i>
+							<div class="dropdown-menu">
+								<ul >
+									<li><a class="dropdown-item dropdown-child-item" href="{{ route('user.home-user') }}">Кабінет</a><i class="arrow_right"></i></li>
+									<li><a class="dropdown-item dropdown-child-item" href="{{ route('user.logout') }}">Log out</a><i class="arrow_right"></i></li>
+								</ul>
+							</div>
+						</li>
+						@endif
 					</ul>
 				</div>
 				<div class="col-md-4 search-flex">
@@ -107,7 +121,9 @@
 							<input type="submit" id="search-submit" />
 						</div>						
 					</form>
-					<a href="#"><img src="{{ asset('/assets/office.png') }}" alt=""></a>
+					@if(!Auth::user())
+					<a href="{{ route('user.login') }}"><img src="{{ asset('/assets/office.png') }}" alt=""></a>
+					@endif
 					<a class="btn btn-record" href="{{ route('all') }}">Запис на прийом</a>
 				</div>
 			<!-- </div> -->

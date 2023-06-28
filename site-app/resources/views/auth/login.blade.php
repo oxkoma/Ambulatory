@@ -5,7 +5,7 @@
 	<div class="row title">
 		<div class="container-fluid">
 			<div class="title-wrapper">
-				<h1>Ауторизація</h1>
+				<h1>Вхід</h1>
 			</div>
 		</div>
 	</div>
@@ -19,8 +19,8 @@
 					<form action=" {{ route('user.login') }}" name="login-form" class="login-form" method="POST">
 						@csrf
 						<div class="login-item">
-							<label for="login">Ваш email <sup><img src="{{ asset('assets/asterisk.png')}}"><sup> </label>
-							<input type="email" name="login" require>
+							<label for="email">Ваш email <sup><img src="{{ asset('assets/asterisk.png')}}"><sup> </label>
+							<input type="email" name="email" require>
 							
 						</div>
 						@error('email')
@@ -29,7 +29,7 @@
 							@enderror
 						<div class="login-item">
 							<label for="password">Ваш пароль <sup><img src="{{ asset('assets/asterisk.png')}}"><sup> </label>
-							<input type="text" name="password" require>
+							<input type="password" name="password" require>
 							
 						</div>
 						@error('password')

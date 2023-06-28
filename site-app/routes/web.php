@@ -11,6 +11,7 @@ use App\Http\Controllers\SpecialityController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MenuController;
 
 
 /*
@@ -41,11 +42,17 @@ Route::get('/price', [PriceController::class, 'showAnalise'])->name('price');
 Route::get('/search-r', [PriceController::class, 'search'])->name('price-search');
 
 Route::name('user.')->group(function() {
-	Route::view('/private', 'private')->middleware('auth')->name('private');
+	// Route::view('/private', 'private')->middleware('auth')->name('private');
+	Route::view('/admin/home', 'admin/home')->middleware('auth')->name('home-admin');
+	Route::view('/user/home', 'user/home')->middleware('auth')->name('home-user');
 	
 	Route::get('/login', function() {
 		if(Auth::check()) {
-			return redirect(route('user.private'));
+			if(Auth::user()->usertype == 'user') {
+				return redirect(route('user.home-user'));
+			}
+			return redirect(route('user.home-admin'));
+			
 		}
 		return view('auth/login');
 	})->name('login');
@@ -56,7 +63,7 @@ Route::name('user.')->group(function() {
 	}])->name('logout');
 	Route::get('/registration', function(){
 		if(Auth::check()) {
-			return redirect(route('user.private'));
+			return redirect(route('user.home-user'));
 		}
 		return view('auth/registration');
 	})->name('registration');

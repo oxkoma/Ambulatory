@@ -215,8 +215,18 @@ li {
     -webkit-transform: rotate(45deg);
 	
 }
+.toggle::after {
+	border-bottom: 2px solid var(--white-color);
+	border-right: 2px solid var(--white-color);
+}
 .nav-link {
 	color: var(--main-color);
+}
+.link-cab {
+	color: var(--white-color);
+}
+.link-cab:focus, .link-cab:hover {
+	color: var(--white-color);
 }
 .navigate {
 	display: flex;
@@ -1251,6 +1261,10 @@ table thead tr {
 	--bs-pagination-focus-color: #15696e;
 	--bs-pagination-active-border-color: var(--main-color);
 	--bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(30, 129, 134, 0.25);
+}
+
+.cab {
+	background-color: var(--main-color);
 }
 
 
