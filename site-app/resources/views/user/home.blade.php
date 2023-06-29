@@ -1,4 +1,4 @@
-@extends('layouts.admin-dash-layout')
+@extends('layouts.user-dash-layout')
 @section('title', 'Кабінет')
 
 @section('content')

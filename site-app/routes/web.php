@@ -77,5 +77,3 @@ Route::resource('menus', MenuController::class);
 Route::resource('posts', PostController::class);
 Route::resource('shedules', SheduleController::class);
 Route::resource('specialities', SpecialityController::class);
-
-

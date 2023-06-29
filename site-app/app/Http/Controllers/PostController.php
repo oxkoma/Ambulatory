@@ -15,9 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('id', 'desc')->paginate(10);
         
-        return view('admi.post.index', compact('posts'));
+        return view('admin.post.index', compact('posts'));
     }
 
     /**
@@ -28,7 +28,7 @@ class PostController extends Controller
     public function create()
     {
         $posts = Post::all();
-        return view('admi.post.create', compact('posts'));
+        return view('admin.post.create', compact('posts'));
     }
 
     /**
@@ -42,10 +42,19 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'img' => 'required',
+            'img' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'alt' => 'required',
         ]);
-        post::create($request->all());
+        Post::create($request->all());
+        $post = DB::table('posts')->orderBy('id', 'desc')->first();
+
+        if($request->hasFile('img')) {
+            $extension = $request->file('img')->extension();
+            $fileName = time(). $extension;
+            $path = $request->file('img')->storeAs('image', $fileName);  
+        }
+      
+       DB::table('posts')->where('id', '=', $post->id)->update(['img' => $fileName]);
 
         return redirect()->route('posts.index')->with('success', 'Record created');
 
@@ -60,7 +69,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        return view('admi.post.show', compact('post'));
+        return view('admin.post.show', compact('post'));
     }
 
     /**
@@ -72,7 +81,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
-        return view('admi.post.edit', compact('post'));
+        return view('admin.post.edit', compact('post'));
     }
 
     /**

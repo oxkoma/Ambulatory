@@ -11,5 +11,5 @@ class Doctor extends Model
     protected $fillable = [ 'fname', 'lname', 'mname', 
                             'speciality_id', 'description', 
                             'keywords', 'experience', 
-                            'category', 'img'];
+                            'category', 'img', 'isOnline'];
 }

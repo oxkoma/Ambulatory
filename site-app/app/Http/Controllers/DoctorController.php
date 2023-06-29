@@ -23,7 +23,7 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = Doctor::all();
+        $doctors = Doctor::paginate(15);
         $specialities = Speciality::all();
 
         return view('admin.doctor.index', compact('doctors', 'specialities'));
@@ -56,9 +56,20 @@ class DoctorController extends Controller
             'description'=>'required',
             'experience'=>'required',
             'category'=>'required',
+            'img' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            
         ]);
+              
+        
         Doctor::create($request->all());
+        $doctor = DB::table('doctors')->orderBy('id', 'desc')->first();
 
+        if($request->hasFile('img')) {
+            $fileName = time().$request->img->getClientOriginalName();
+            $path = $request->file('img')->storeAs('image', $fileName);  
+        }
+      
+       DB::table('doctors')->where('id', '=', $doctor->id)->update(['img' => $fileName]);
         return redirect()->route('doctors.index')->with('success', 'Record created');
 
     }
@@ -98,6 +109,8 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $doctor = Doctor::find($id);
+
         $request->validate([
             'fname' => 'required',
             'lname' => 'required',
@@ -106,10 +119,17 @@ class DoctorController extends Controller
             'description'=>'required',
             'experience'=>'required',
             'category'=>'required',
-        ]);
-        $doctor = Doctor::find($id);
-        $doctor->update($request->all());
-        return redirect()->route('doctors.index')->with('success', 'Record updated');
+            'img' => 'image|mimes:jpeg,png,jpg|max:2048',
+        ]); 
+       
+        if($request->hasFile('img')) {
+            $fileName = time().$request->img->getClientOriginalName();
+            $path = $request->file('img')->storeAs('image', $fileName);
+            $doctor->img = $fileName;       
+        }
+        $doctor->save();
+        
+        return redirect()->route('doctors.show', $doctor->id)->with('success', 'Record updated');
 
     }
 

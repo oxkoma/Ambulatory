@@ -1168,6 +1168,7 @@ textarea:focus-visible {
 }
 .keyword {
 	display: flex;
+	flex-direction: column;
 	margin: 0 0 40px 0;
 	color: var(--main-color);
 }
@@ -1266,7 +1267,9 @@ table thead tr {
 .cab {
 	background-color: var(--main-color);
 }
-
+.btn-cyan {
+	background-color: #17a2b8;
+}
 
 @media (max-width: 576px) {
 	.doctor-card-image {
