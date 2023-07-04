@@ -8,6 +8,7 @@
 	<!-- <base href="{{ \URL::to('/') }}"> -->
 
 	@include('layouts.styles')
+	@stack('styles')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -45,7 +46,10 @@
 				<!-- Sidebar user panel (optional) -->
 				<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 					<div class="info">
+						@if(Auth::user())
 						<a href="#" class="d-block">{{Auth::user()->name}}</a>
+						@else <a href="{{ route('user.login') }}" class="d-block">Увійти</a>
+						@endif
 					</div>
 				</div>
 
@@ -56,14 +60,14 @@
 						<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-						<li class="nav-header">EXAMPLES</li>
+						<li class="nav-header">МЕНЮ</li>
 						<li class="nav-item">
 							<a href="{{ route('doctors.index')}}"
 								class="nav-link {{ (request()->is('doctors*')) ? 'active' : '' }}">
 								<i class="nav-icon fas fa-user-alt"></i>
 								<p>
 									Лікарі
-									<!-- <span class="badge badge-info right">2</span> -->
+
 								</p>
 							</a>
 						</li>
@@ -77,11 +81,14 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="pages/kanban.html"
-								class="nav-link {{ (request()->is('admin/doctor*')) ? 'active' : ''  }}">
+							<a href="{{ route('orders.index') }}"
+								class="nav-link {{ (request()->is('orders*')) ? 'active' : ''  }}">
 								<i class="nav-icon fas fa-columns"></i>
 								<p>
-									Kanban Board
+									Записи на прийом
+									<span class="badge badge-info right">{{ $ordersCount>0 ? $ordersCount : '' }}
+									</span>
+
 								</p>
 							</a>
 						</li>
@@ -147,7 +154,7 @@
 	</div>
 	<!-- ./wrapper -->
 	@include('layouts.scripts')
-
+	@stack('scripts')
 
 </body>
 

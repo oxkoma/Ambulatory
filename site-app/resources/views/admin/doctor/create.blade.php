@@ -53,7 +53,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 ">
 					<div class="form-group">
 						<strong>Опис:</strong><br />
-						<textarea class="form-select w-100" name="description" rows="3">
+						<textarea class="form-select w-100" name="description" id="description" rows="3">
 					</textarea>
 					</div>
 				</div>
@@ -96,3 +96,23 @@
 	</div>
 </section>
 @endsection
+
+@push('styles')
+<link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+@endpush
+
+
+@push('scripts')
+<script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}">
+</script>
+<script src="{{ asset('plugins/summernote/lang/summernote-uk-UA.min.js') }}"></script>
+<script>
+$(function() {
+	$("#description").summernote({
+		lang: 'uk-UA',
+		height: 200
+	});
+});
+</script>
+
+@endpush

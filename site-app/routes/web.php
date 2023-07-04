@@ -12,6 +12,7 @@ use App\Http\Controllers\PriceController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\OrderController;
 
 
 /*
@@ -40,6 +41,9 @@ Route::get('/appointment/{doctor_id}',[DoctorController::class, 'showOne']);
 Route::get('/online', [DoctorController::class, 'showOnline'])->name('online');
 Route::get('/price', [PriceController::class, 'showAnalise'])->name('price');
 Route::get('/search-r', [PriceController::class, 'search'])->name('price-search');
+
+Route::post('/appointment/{doctor_id}', [OrderController::class, 'save'])->name('order_save');
+
 
 Route::name('user.')->group(function() {
 	// Route::view('/private', 'private')->middleware('auth')->name('private');
@@ -71,6 +75,7 @@ Route::name('user.')->group(function() {
 	Route::post('/registration', [RegisterController::class,'save']);
 });
 
+Route::resource('orders', OrderController::class);
 Route::resource('doctors', DoctorController::class);
 Route::resource('ambulatories', AmbulatoryController::class);
 Route::resource('menus', MenuController::class);

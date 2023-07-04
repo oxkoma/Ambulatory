@@ -17,6 +17,11 @@
 </section>
 <!--section title-->
 <section>
+	@if(session()->has('success'))
+	<div class="alert alert-success">
+		{{ session()->get('success') }}
+	</div>
+	@endif
 	<div class="row title">
 		<div class="container-fluid">
 			<div class="title-wrapper">
@@ -38,7 +43,7 @@
 						<p>{{ $specialities[$doctor->speciality_id-1]->name }}<br />
 							Кваліфікаційна категорія: {{ $doctor->category }}<br />
 							Стаж: {{ $doctor->experience }} років</p>
-						<p>{{ $doctor->description }}</p>
+						<div>{!! $doctor->description !!}</div>
 					</div>
 				</div>
 				<div class="employee-services">
@@ -80,8 +85,10 @@
 </section>
 <!--section doctor-appointment-->
 <section>
+
 	<div class="row appoint">
 		<div class="doctor-appoint">
+
 
 			<div class="doctor-slot">
 				<div class="doctor-slot-title">
@@ -90,19 +97,19 @@
 				<div class="doctor-slot-description">
 					<span>Заповніть форму та чекайте підтвердження<br>Поля із зірочкою обов'язкові для заповнення</span>
 				</div>
-				<form action="" name="appoint-form" class="appoint-form" method="POST">
+				<form action="{{ url('/appointment/{doctor_id}') }}" name="appoint-form" class="appoint-form"
+					method="POST">
 					@csrf
 					<div class="doctor-slot-date">
-						<label for="start">Оберіть дату <sup><img src="{{ asset('assets/asterisk.png')}}"><sup> </label>
-						<input type="date" id="start" name="trip-start" value="date"
-							min="{{ $shedules[$doctor->id-1]->date_start }}"
-							max="{{ $shedules[$doctor->id-1]->date_end }}">
+						<label for="date">Оберіть дату <sup><img src="{{ asset('assets/asterisk.png')}}"><sup> </label>
+						<input type="date" id="date" name="date" value="date"
+							min="{{ $shedules[$doctor->id-1]->date_start }}" max="" required>
 					</div>
 
 					<div class="doctor-slot-address">
 						<span>Оберіть амбулаторію <sup><img src="{{ asset('assets/asterisk.png')}}"><sup> </span>
 						<div class="doctor-slot-select-address">
-							<select name="address" id="doc-address" class="slot-select-address">
+							<select name="ambulatory_id" id="ambulatory_id" class="slot-select-address">
 								@foreach ($shedules as $shedule)
 								@if ($shedule->doctor_id == $doctor->id)
 								<option value="{{ $shedule->ambulatory_id }}">
@@ -114,24 +121,29 @@
 					</div>
 					<div class="doctor-slot-contact">
 						<div class="slot-contact-item">
-							<label for="contact-name">Ваше ім'я <sup><img src="{{ asset('assets/asterisk.png')}}"><sup>
+							<label for="fname">Ваше ім'я <sup><img src="{{ asset('assets/asterisk.png')}}"><sup>
 							</label>
-							<input type="text" name="contact-name" require>
+							<input type="text" name="fname" style="text-align: left;"
+								value="{{ auth()->user() ? auth()->user()->name : '' }}" required>
+						</div>
+						<div class=" slot-contact-item">
+							<label for="lname">Ваше прізвище</label>
+							<input type="text" name="lname">
 						</div>
 						<div class="slot-contact-item">
-							<label for="contact-lname">Ваше прізвище</label>
-							<input type="text" name="contact-lname">
+							<label for="phone">Номер телефона <sup><img src="{{ asset('assets/asterisk.png')}}"><sup>
+							</label>
+							<input type="tel" name="phone" placeholder="+38050-123-34-56"
+								pattern="+380[0-9]{2}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
+								value="{{ auth()->user() ? auth()->user()->phone : '' }}" required>
 						</div>
 						<div class="slot-contact-item">
-							<label for="contact-phone">Номер телефона <sup><img
-										src="{{ asset('assets/asterisk.png')}}"><sup> </label>
-							<input type="tel" name="contact-phone" placeholder="+38050-123-34-56"
-								pattern="+380[0-9]{2}-[0-9]{3}-[0-9]{2}-[0-9]{2}" require>
+							<label for="description">Додатково</label>
+							<textarea name="description" resize="none"></textarea>
 						</div>
-						<div class="slot-contact-item">
-							<label for="contact-lname">Додатково</label>
-							<textarea name="contact-comment" resize="none"></textarea>
-						</div>
+						<input type="hidden" name="email" value="{{ auth()->user() ? auth()->user()->email : '' }}">
+						<input type="hidden" name="user_id" value="{{ auth()->user()  ? auth()->user()->id : '' }}">
+						<input type="hidden" name="doctor_id" value="{{$doctor->id}}">
 					</div>
 					<input type="submit" value="Відправити" name="btn-submit" class="btn-green btn-appoint">
 				</form>

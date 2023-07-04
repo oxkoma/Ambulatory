@@ -24,7 +24,7 @@
 								<p>{{ $specialities[$doctor->speciality_id-1]->name }}</p>
 								<p>Кваліфікаційна категорія: <span>{{  $doctor->category }}</span></p>
 								<p>Стаж: <span>{{ $doctor->experience}} років</span></p>
-								<p>{{ $doctor->description }}</p>
+								<div>{!! $doctor->description !!}</div>
 
 							</div>
 						</div>

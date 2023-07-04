@@ -17,7 +17,7 @@
 			<p>Спеціальність: {{ $specialities[$doctor->speciality_id-1]->name }}</p>
 			<p>Кваліфікаційна категорія: {{ $doctor->category }}</p>
 			<p> Стаж: {{ $doctor->experience }} років</p>
-			<p>Опис: {{ $doctor->description }}</p>
+			<div>Опис: {!! $doctor->description !!}</div>
 			@if($doctor->isOnline == 'on')
 			<p> Працює онлайн</p>
 			@endif

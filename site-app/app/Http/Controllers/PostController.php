@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -50,8 +51,8 @@ class PostController extends Controller
 
         if($request->hasFile('img')) {
             $extension = $request->file('img')->extension();
-            $fileName = time(). $extension;
-            $path = $request->file('img')->storeAs('image', $fileName);  
+            $fileName = time().'.'.$extension;
+            $path = $request->file('img')->storeAs('post', $fileName);  
         }
       
        DB::table('posts')->where('id', '=', $post->id)->update(['img' => $fileName]);
@@ -96,12 +97,12 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'img' => 'required',
+            'img' => 'image|mimes:jpeg,png,jpg|max:2048',
             'alt' => 'required',
         ]);
         $post = Post::find($id);
         $post->update($request->all());
-        return redirect()->route('posts.index')->with('success', 'Record updated');
+        return redirect()->route('posts.show', $id)->with('success', 'Record updated');
 
     }
 
@@ -134,4 +135,5 @@ class PostController extends Controller
         $post = Post::find($id);
         return view('site.post', compact('post'));
     }
+
 }
