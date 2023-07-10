@@ -28,5 +28,8 @@ class ViewServiceProvider extends ServiceProvider
         // Paginator::useBootstrap();
         $ordersCount = Order::where('status_id', '=', 1)->count();
         View::share('ordersCount', $ordersCount);
+        
+        $status_id = 0;
+        View::share('status_id', $status_id);
     }
 }

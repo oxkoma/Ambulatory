@@ -7,7 +7,7 @@
 $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- <script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script> -->
 <!-- ChartJS -->
 <script src="{{ asset('admin/plugins/chart.js/Chart.min.js') }}"></script>
 <!-- JQVMap -->

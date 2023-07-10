@@ -5,8 +5,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>@yield('title')</title>
-	<base href="{{ \URL::to('/') }}">
+	<!-- <base href="{{ \URL::to('/') }}"> -->
 	@include('layouts.styles')
+	@stack('styles')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -26,17 +27,13 @@
 			</ul>
 		</nav>
 
-
-
-
-
 		<!-- Main Sidebar Container -->
 		<aside class="main-sidebar sidebar-light-cyan elevation-4">
 			<!-- Brand Logo -->
 			<a href="{{ route('index') }}" class="brand-link">
 				<img src="{{ asset('admin/dist/img/AdminLTELogo.png') }}" alt="Logo"
 					class="brand-image img-circle elevation-3" style="opacity: .8">
-				<span class="brand-text font-weight-light">AdminLTE 3</span>
+				<span class="brand-text font-weight-light">Сайт Амбулаторії</span>
 			</a>
 
 			<!-- Sidebar -->
@@ -55,29 +52,22 @@
 						<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-						<li class="nav-header">EXAMPLES</li>
+						<li class="nav-header">Кабінет користувача</li>
 						<li class="nav-item">
-							<a href="pages/calendar.html" class="nav-link">
-								<i class="nav-icon far fa-calendar-alt"></i>
+							<a href="{{ route('user-data') }}"
+								class="nav-link {{ (request()->is('cabinet*')) ? 'active' : '' }}">
+								<i class="nav-icon fas fa-user-alt"></i>
 								<p>
-									Calendar
-									<span class="badge badge-info right">2</span>
+									Мої дані
 								</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="pages/gallery.html" class="nav-link">
-								<i class="nav-icon far fa-image"></i>
-								<p>
-									Gallery
-								</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="pages/kanban.html" class="nav-link">
+							<a href="{{ route('show-user-order') }}"
+								class="nav-link {{ (request()->is('appoint-order*')) ? 'active' : '' }}">
 								<i class="nav-icon fas fa-columns"></i>
 								<p>
-									Kanban Board
+									Мої записи
 								</p>
 							</a>
 						</li>
@@ -96,13 +86,7 @@
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0">Dashboard</h1>
-						</div><!-- /.col -->
-						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">Dashboard v1</li>
-							</ol>
+							<h1 class="m-0">@yield('header')</h1>
 						</div><!-- /.col -->
 					</div><!-- /.row -->
 				</div><!-- /.container-fluid -->
@@ -114,7 +98,7 @@
 				<div class="container-fluid">
 					<!-- Small boxes (Stat box) -->
 					<div class="row">
-						---------------------------Dashboard ---------------------------------
+
 					</div>
 					<!-- /.row -->
 					<!-- Main row -->
@@ -127,13 +111,7 @@
 			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->
-		<footer class="main-footer">
-			<strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-			All rights reserved.
-			<div class="float-right d-none d-sm-inline-block">
-				<b>Version</b> 3.2.0
-			</div>
-		</footer>
+		@include('layouts.footer')
 
 		<!-- Control Sidebar -->
 		<aside class="control-sidebar control-sidebar-dark">
@@ -144,6 +122,7 @@
 	<!-- ./wrapper -->
 
 	@include('layouts.scripts')
+	@stack('scripts')
 </body>
 
 </html>

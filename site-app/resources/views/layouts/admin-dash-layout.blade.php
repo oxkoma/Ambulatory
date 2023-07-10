@@ -27,11 +27,6 @@
 				</li>
 			</ul>
 		</nav>
-
-
-
-
-
 		<!-- Main Sidebar Container -->
 		<aside class="main-sidebar sidebar-light-cyan elevation-4">
 			<!-- Brand Logo -->
@@ -67,13 +62,12 @@
 								<i class="nav-icon fas fa-user-alt"></i>
 								<p>
 									Лікарі
-
 								</p>
 							</a>
 						</li>
 						<li class="nav-item">
 							<a href="{{ route('posts.index') }}"
-								class="nav-link {{ (request()->is('posts*')) ? 'active' : ''  }}">
+								class="nav-link {{ (request()->is('posts*')) ? 'active' : '' }}">
 								<i class="nav-icon fas fa-newspaper"></i>
 								<p>
 									Публікації
@@ -82,13 +76,12 @@
 						</li>
 						<li class="nav-item">
 							<a href="{{ route('orders.index') }}"
-								class="nav-link {{ (request()->is('orders*')) ? 'active' : ''  }}">
+								class="nav-link {{ (request()->is('orders*')) ? 'active' : '' }}">
 								<i class="nav-icon fas fa-columns"></i>
 								<p>
 									Записи на прийом
 									<span class="badge badge-info right">{{ $ordersCount>0 ? $ordersCount : '' }}
 									</span>
-
 								</p>
 							</a>
 						</li>
@@ -110,12 +103,12 @@
 
 							<h1 class="m-0">@yield('header')</h1>
 						</div><!-- /.col -->
-						<div class="col-sm-6">
+						<!-- <div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
 								<li class="breadcrumb-item active">Dashboard v1</li>
-							</ol>
-						</div><!-- /.col -->
+							</ol> -->
+						<!-- </div>/.col -->
 					</div><!-- /.row -->
 				</div><!-- /.container-fluid -->
 			</div>
@@ -138,13 +131,8 @@
 			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->
-		<footer class="main-footer">
-			<strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-			All rights reserved.
-			<div class="float-right d-none d-sm-inline-block">
-				<b>Version</b> 3.2.0
-			</div>
-		</footer>
+		@include('layouts.footer')
+
 
 		<!-- Control Sidebar -->
 		<aside class="control-sidebar control-sidebar-dark">

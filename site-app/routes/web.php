@@ -13,6 +13,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserCabinetController;
 
 
 /*
@@ -41,14 +42,18 @@ Route::get('/appointment/{doctor_id}',[DoctorController::class, 'showOne']);
 Route::get('/online', [DoctorController::class, 'showOnline'])->name('online');
 Route::get('/price', [PriceController::class, 'showAnalise'])->name('price');
 Route::get('/search-r', [PriceController::class, 'search'])->name('price-search');
+Route::get('/getOrders', [OrderController::class, 'sortStatus'])->name('orders-sort');
+Route::get('/cabinet', [UserCabinetController::class, 'showUserData'])->name('user-data');
+Route::get('/cabinet/edit', [UserCabinetController::class, 'editUserData'])->name('edit-user-data');
+Route::get('/appoint-order', [UserCabinetController::class, 'showOrder'])->name('show-user-order');
 
 Route::post('/appointment/{doctor_id}', [OrderController::class, 'save'])->name('order_save');
-
+Route::put('/cabinet/edit', [UserCabinetController::class, 'updateUserData'])->name('update-user-data');
 
 Route::name('user.')->group(function() {
-	// Route::view('/private', 'private')->middleware('auth')->name('private');
 	Route::view('/admin/home', 'admin/home')->middleware('auth')->name('home-admin');
 	Route::view('/user/home', 'user/home')->middleware('auth')->name('home-user');
+	
 	
 	Route::get('/login', function() {
 		if(Auth::check()) {
@@ -56,15 +61,17 @@ Route::name('user.')->group(function() {
 				return redirect(route('user.home-user'));
 			}
 			return redirect(route('user.home-admin'));
-			
 		}
 		return view('auth/login');
 	})->name('login');
+	
 	Route::post('/login', [LoginController::class, 'login']);
+	
 	Route::get('/logout', [function() {
 		Auth::logout();
 		return redirect(route('index'));
 	}])->name('logout');
+	
 	Route::get('/registration', function(){
 		if(Auth::check()) {
 			return redirect(route('user.home-user'));
@@ -75,10 +82,10 @@ Route::name('user.')->group(function() {
 	Route::post('/registration', [RegisterController::class,'save']);
 });
 
-Route::resource('orders', OrderController::class);
-Route::resource('doctors', DoctorController::class);
-Route::resource('ambulatories', AmbulatoryController::class);
+Route::resource('orders', OrderController::class)->middleware('auth');
+Route::resource('doctors', DoctorController::class)->middleware('auth');
+Route::resource('ambulatories', AmbulatoryController::class)->middleware('auth');
 Route::resource('menus', MenuController::class);
-Route::resource('posts', PostController::class);
+Route::resource('posts', PostController::class)->middleware('auth');
 Route::resource('shedules', SheduleController::class);
 Route::resource('specialities', SpecialityController::class);

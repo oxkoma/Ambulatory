@@ -9,26 +9,42 @@
 		</div>
 		@endif
 		@if(count($orders))
-		<table class="table table-striped" style="text-align: center; width: 100%;">
+		<table class="table table-striped text-center" style="width: 100%;">
 			<thead>
 				<tr>
 					<th></th>
-					<th>Статус</th>
-					<th>Дата</th>
-					<th>Час</th>
-					<th>Амбулаторія</th>
-					<th>Доктор</th>
-					<th>Ім'я</th>
-					<th>Прізвище</th>
-					<th>Телефон</th>
-					<th>Email</th>
-					<th>Додатково</th>
+					<th>Статус<br />
+						<form action="{{ route('orders-sort') }}" method="GET">
+							@csrf
+							<select name="status" id="status" onchange="this.form.submit()">
+								<option value="0">Всі</option>
+								@foreach($statuses as $status)
+								@if ($status->id == $status_id)
+								<option value="{{ $status->id }}" selected>{{ $status->status }}</option>
+								@else
+								<option value="{{ $status->id }}">{{ $status->status }}</option>
+								@endif
+								@endforeach
+							</select>
+						</form>
+
+					</th>
+					<th>Дата<br />
+					</th>
+					<th>Час<br /></th>
+					<th>Амбулаторія<br /></th>
+					<th>Доктор<br /></th>
+					<th>Ім'я<br /></th>
+					<th>Прізвище<br /></th>
+					<th>Телефон<br /></th>
+					<th>Email<br /></th>
+					<th>Додатково<br /></th>
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach($orders as $order)
-				<tr>
+				<tr class="text-center">
 					<td> {{ $order->id }} </td>
 					<td>
 						@if($order->status->id == '1')
@@ -74,4 +90,7 @@
 
 		@else <p>Жодного запису не знайдено</p>@endif
 	</div>
-</section>@endsection
+</section>
+
+
+@endsection

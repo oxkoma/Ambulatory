@@ -15,7 +15,7 @@ class Order extends Model
     
     protected $fillable = [
         'user_id', 'ambulatory_id', 'doctor_id', 'date', 'time',
-        'description', 'lname', 'fname', 'email', 'status_id'
+        'description', 'lname', 'fname', 'email', 'status_id', 'phone'
     ];
 
     public function ambulatory() {

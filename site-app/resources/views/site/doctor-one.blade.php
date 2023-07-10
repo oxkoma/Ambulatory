@@ -101,13 +101,13 @@
 					method="POST">
 					@csrf
 					<div class="doctor-slot-date">
-						<label for="date">Оберіть дату <sup><img src="{{ asset('assets/asterisk.png')}}"><sup> </label>
+						<label for="date">Оберіть дату <sup><img src="{{ asset('assets/asterisk.png')}}"></sup> </label>
 						<input type="date" id="date" name="date" value="date"
 							min="{{ $shedules[$doctor->id-1]->date_start }}" max="" required>
 					</div>
 
 					<div class="doctor-slot-address">
-						<span>Оберіть амбулаторію <sup><img src="{{ asset('assets/asterisk.png')}}"><sup> </span>
+						<span>Оберіть амбулаторію <sup><img src="{{ asset('assets/asterisk.png')}}"></sup> </span>
 						<div class="doctor-slot-select-address">
 							<select name="ambulatory_id" id="ambulatory_id" class="slot-select-address">
 								@foreach ($shedules as $shedule)
@@ -121,7 +121,7 @@
 					</div>
 					<div class="doctor-slot-contact">
 						<div class="slot-contact-item">
-							<label for="fname">Ваше ім'я <sup><img src="{{ asset('assets/asterisk.png')}}"><sup>
+							<label for="fname">Ваше ім'я <sup><img src="{{ asset('assets/asterisk.png')}}"></sup>
 							</label>
 							<input type="text" name="fname" style="text-align: left;"
 								value="{{ auth()->user() ? auth()->user()->name : '' }}" required>
@@ -131,17 +131,22 @@
 							<input type="text" name="lname">
 						</div>
 						<div class="slot-contact-item">
-							<label for="phone">Номер телефона <sup><img src="{{ asset('assets/asterisk.png')}}"><sup>
+							<label for="phone">Номер телефона <sup><img src="{{ asset('assets/asterisk.png')}}"></sup>
 							</label>
 							<input type="tel" name="phone" placeholder="+38050-123-34-56"
 								pattern="+380[0-9]{2}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
 								value="{{ auth()->user() ? auth()->user()->phone : '' }}" required>
 						</div>
+						<div class=" slot-contact-item">
+							<label for="email">Email <sup>
+									<img src="{{ asset('assets/asterisk.png')}}"></sup></label>
+							<input type="email" name="email" value="{{ auth()->user() ? auth()->user()->email : '' }}">
+						</div>
 						<div class="slot-contact-item">
 							<label for="description">Додатково</label>
 							<textarea name="description" resize="none"></textarea>
 						</div>
-						<input type="hidden" name="email" value="{{ auth()->user() ? auth()->user()->email : '' }}">
+						<!-- <input type="hidden" name="email" value="{{ auth()->user() ? auth()->user()->email : '' }}"> -->
 						<input type="hidden" name="user_id" value="{{ auth()->user()  ? auth()->user()->id : '' }}">
 						<input type="hidden" name="doctor_id" value="{{$doctor->id}}">
 					</div>
