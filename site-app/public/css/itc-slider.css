@@ -29,6 +29,7 @@
 .itc-slider-wrapper {
   overflow: hidden;
   /* width: 1100px; */
+  height: 300px;
 }
 
 .itc-slider-items{
@@ -88,11 +89,11 @@
   align-items: flex-start;
   gap: 10px;
   width: 100%;
-  margin-left: 5%;
+  margin-left: 8%;
 }
 .itc-slider-image {
-  margin-right: 5%;
-  width: 50%;
+  margin-right: 8%;
+  max-width: 330px;
   
 }
 .itc-slider-image img {

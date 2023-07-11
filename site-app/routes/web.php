@@ -47,13 +47,15 @@ Route::get('/cabinet', [UserCabinetController::class, 'showUserData'])->name('us
 Route::get('/cabinet/edit', [UserCabinetController::class, 'editUserData'])->name('edit-user-data');
 Route::get('/appoint-order', [UserCabinetController::class, 'showOrder'])->name('show-user-order');
 
+Route::view('/contact', 'site.contact');
+
 Route::post('/appointment/{doctor_id}', [OrderController::class, 'save'])->name('order_save');
 Route::put('/cabinet/edit', [UserCabinetController::class, 'updateUserData'])->name('update-user-data');
 
 Route::name('user.')->group(function() {
 	Route::view('/admin/home', 'admin/home')->middleware('auth')->name('home-admin');
 	Route::view('/user/home', 'user/home')->middleware('auth')->name('home-user');
-	
+
 	
 	Route::get('/login', function() {
 		if(Auth::check()) {
@@ -82,10 +84,12 @@ Route::name('user.')->group(function() {
 	Route::post('/registration', [RegisterController::class,'save']);
 });
 
-Route::resource('orders', OrderController::class)->middleware('auth');
-Route::resource('doctors', DoctorController::class)->middleware('auth');
-Route::resource('ambulatories', AmbulatoryController::class)->middleware('auth');
-Route::resource('menus', MenuController::class);
-Route::resource('posts', PostController::class)->middleware('auth');
-Route::resource('shedules', SheduleController::class);
-Route::resource('specialities', SpecialityController::class);
+Route::middleware(['auth', 'admin'])->group(function (){
+	Route::resource('orders', OrderController::class);
+	Route::resource('doctors', DoctorController::class);
+	Route::resource('ambulatories', AmbulatoryController::class);
+	Route::resource('menus', MenuController::class);
+	Route::resource('posts', PostController::class);
+	Route::resource('shedules', SheduleController::class);
+	Route::resource('specialities', SpecialityController::class);
+});
