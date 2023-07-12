@@ -73,14 +73,15 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="{{ route('posts.index') }}"
-								class="nav-link {{ (request()->is('posts*')) ? 'active' : '' }}">
+							<a href="{{ route('shedules.index') }}"
+								class="nav-link {{ (request()->is('shedules*')) ? 'active' : '' }}">
 								<i class="nav-icon fas fa-newspaper"></i>
 								<p>
-									Публікації
+									Розклад
 								</p>
 							</a>
 						</li>
+
 						<li class="nav-item">
 							<a href="{{ route('orders.index') }}"
 								class="nav-link {{ (request()->is('orders*')) ? 'active' : '' }}">
@@ -89,6 +90,15 @@
 									Записи на прийом
 									<span class="badge badge-info right">{{ $ordersCount>0 ? $ordersCount : '' }}
 									</span>
+								</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{ route('posts.index') }}"
+								class="nav-link {{ (request()->is('posts*')) ? 'active' : '' }}">
+								<i class="nav-icon fas fa-newspaper"></i>
+								<p>
+									Публікації
 								</p>
 							</a>
 						</li>

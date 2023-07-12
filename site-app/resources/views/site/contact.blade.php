@@ -1,5 +1,21 @@
 @extends('site.layouts.master')
 @section('content')
+<!--section breadcrumbs-->
+<section>
+	<div class="row breadcrumbs">
+		<div class="container-fluid ">
+			<div class="breadcrumbs-wrapper">
+				<ul class="breadcrumbs-ul">
+					<li><a href="{{  route('index') }}"><img src="{{ asset('/assets/home.png') }}" alt=""></a></li>
+
+					<li><i class="arrow-li"></i>Контакти</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</section>
+<!--section title-->
 <section>
 	<div class="row title">
 		<div class="container-fluid">
@@ -11,6 +27,11 @@
 </section>
 <section>
 	<div class="row contact-block">
+		@if(session()->has('success'))
+		<div class="alert alert-success">
+			{{ session()->get('success') }}
+		</div>
+		@endif
 		<div class="container-fluid">
 			<div class="wrapper">
 				<div class="contact-block-items">
@@ -78,15 +99,39 @@
 				<div class="contact-form">
 					<h3>У Вас є запитання?</h3>
 					<p>Заповніть форму і ми з Вами зв’яжемося!</p>
-					<form action="" method="GET" class="frm">
+					<form action="{{ route('contact-form') }}" method="POST" class="frm">
+						@csrf
 						<div class="contact-data-item">
 							<div class="contact-data">
-								<input type="text" placeholder="Ваше ім’я" class="c-name">
-								<input type="tel" placeholder="Ваш телефонний номер" class="c-phone">
-								<input type="email" placeholder="Ваш email" class="c-email">
+								<div class="group">
+									<input type="text" placeholder="Ваше ім’я" class="c-name" name="name"
+										value="{{ old('name') }}" required>
+									@error(' name') <span class="text-danger">{{ $message }}</span>
+									@enderror
+								</div>
+								<div class="group">
+									<input type="tel" placeholder="Ваш телефонний номер" class="c-phone" name="phone"
+										value="{{ old('phone') }}" required>
+									@error('phone')
+									<span class="text-danger">{{ $message }}</span>
+									@enderror
+								</div>
+
+								<div class="group">
+									<input type="email" placeholder="Ваш email" class="c-email" name="email"
+										value="{{ old('email') }}" required>
+									@error('email')
+									<span class="text-danger">{{ $message }}</span>
+									@enderror
+								</div>
 							</div>
 							<div class="textarea-container">
-								<textarea name="message" id="" placeholder="Ваше питання" class="c-text"></textarea>
+
+								<textarea name="message" id="" placeholder="Ваше питання" class="c-text"
+									value="{{ old('message') }}" required></textarea>
+								@error('message')
+								<span class="text-danger">{{ $message }}</span>
+								@enderror
 							</div>
 
 						</div>

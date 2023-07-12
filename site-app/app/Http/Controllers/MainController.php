@@ -5,6 +5,8 @@ use App\Models\Speciality;
 use App\Models\Post;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactForm;
 
 
 class MainController extends Controller
@@ -25,5 +27,18 @@ class MainController extends Controller
     
         return view('layouts.admin-dash-layout', compact('ordersCount'));
         // 
+    }
+
+    public function submitContact(Request $request) {
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'message' => 'required'
+        ]);
+
+        Mail::to('ambulatory.ldc01@gmail.com')->send(new ContactForm($request));
+        
+        return redirect()->back()->with('success', 'Ваш запит відправлено. Ми обов\'язково Вам відповімо.');
     }
 }

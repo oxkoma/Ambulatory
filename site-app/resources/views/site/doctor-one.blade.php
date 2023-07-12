@@ -97,13 +97,16 @@
 				<div class="doctor-slot-description">
 					<span>Заповніть форму та чекайте підтвердження<br>Поля із зірочкою обов'язкові для заповнення</span>
 				</div>
-				<form action="{{ url('/appointment/{doctor_id}') }}" name="appoint-form" class="appoint-form"
+				<form action="{{ route('order-save', $doctor->id) }}" name="appoint-form" class="appoint-form"
 					method="POST">
 					@csrf
 					<div class="doctor-slot-date">
 						<label for="date">Оберіть дату <sup><img src="{{ asset('assets/asterisk.png')}}"></sup> </label>
-						<input type="date" id="date" name="date" value="date"
+						<input type="date" id="date" name="date" value="{{ old('date') }}"
 							min="{{ $shedules[$doctor->id-1]->date_start }}" max="" required>
+						@error('date')
+						<span class="text-danger">{{ $message }}</span>
+						@enderror
 					</div>
 
 					<div class="doctor-slot-address">
@@ -124,27 +127,38 @@
 							<label for="fname">Ваше ім'я <sup><img src="{{ asset('assets/asterisk.png')}}"></sup>
 							</label>
 							<input type="text" name="fname" style="text-align: left;"
-								value="{{ auth()->user() ? auth()->user()->name : '' }}" required>
+								value="{{ auth()->user() ? auth()->user()->name : old('fname') }}" required>
+							@error('fname')
+							<span class="text-danger">{{ $message }}</span>
+							@enderror
 						</div>
 						<div class=" slot-contact-item">
 							<label for="lname">Ваше прізвище</label>
-							<input type="text" name="lname">
+							<input type="text" name="lname" value="{{ old('lname') }}">
 						</div>
 						<div class="slot-contact-item">
 							<label for="phone">Номер телефона <sup><img src="{{ asset('assets/asterisk.png')}}"></sup>
 							</label>
 							<input type="tel" name="phone" placeholder="+38050-123-34-56"
 								pattern="+380[0-9]{2}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
-								value="{{ auth()->user() ? auth()->user()->phone : '' }}" required>
+								value="{{ auth()->user() ? auth()->user()->phone : old('phone') }}" required>
+							@error('phone')
+							<span class="text-danger">{{ $message }}</span>
+							@enderror
 						</div>
 						<div class=" slot-contact-item">
 							<label for="email">Email <sup>
 									<img src="{{ asset('assets/asterisk.png')}}"></sup></label>
-							<input type="email" name="email" value="{{ auth()->user() ? auth()->user()->email : '' }}">
+							<input type="email" name="email"
+								value="{{ auth()->user() ? auth()->user()->email : old('email') }}">
+							@error('email')
+							<span class="text-danger">{{ $message }}</span>
+							@enderror
+
 						</div>
 						<div class="slot-contact-item">
 							<label for="description">Додатково</label>
-							<textarea name="description" resize="none"></textarea>
+							<textarea name="description" resize="none" value="{{ old('description') }}"></textarea>
 						</div>
 						<!-- <input type="hidden" name="email" value="{{ auth()->user() ? auth()->user()->email : '' }}"> -->
 						<input type="hidden" name="user_id" value="{{ auth()->user()  ? auth()->user()->id : '' }}">

@@ -7,15 +7,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Http\Request;
-use App\Models\Doctor;
-use App\Models\Ambulatory;
 
-class OrderCreated extends Mailable
+class ContactForm extends Mailable
 {
     use Queueable, SerializesModels;
-    
-    protected $order;
-    // protected $doctors;
+
     /**
      * Create a new message instance.
      *
@@ -23,8 +19,7 @@ class OrderCreated extends Mailable
      */
     public function __construct(Request $request)
     {
-        $this->order = $request;
-        
+        $this->data = $request;
     }
 
     /**
@@ -34,10 +29,7 @@ class OrderCreated extends Mailable
      */
     public function build()
     {
-        $doctors = Doctor::all();
-        $ambulatories = Ambulatory::all();
-        $subject = 'Ваш запис отримано';
-        return $this->subject($subject)->markdown('mails.order-created', 
-            ['order' => $this->order, 'doctors' => $doctors, 'ambulatories' => $ambulatories]);
+        $subject = 'Запитання з сайту';
+        return $this->subject($subject)->markdown('mails.contact-form', ['data' => $this->data]);
     }
 }

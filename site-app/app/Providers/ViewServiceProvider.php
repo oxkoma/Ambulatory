@@ -31,5 +31,8 @@ class ViewServiceProvider extends ServiceProvider
         
         $status_id = 0;
         View::share('status_id', $status_id);
+
+        $ambulatory_id = 0;
+        View::share('ambulatory_id', $ambulatory_id);
     }
 }

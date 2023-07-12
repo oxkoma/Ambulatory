@@ -19,29 +19,29 @@
 					<form action=" {{ route('user.login') }}" name="login-form" class="login-form" method="POST">
 						@csrf
 						<div class="login-item">
-							<label for="email">Ваш email <sup><img src="{{ asset('assets/asterisk.png')}}"><sup> </label>
-							<input type="email" name="email" require>
-							
+							<label for="email">Ваш email <sup><img src="{{ asset('assets/asterisk.png')}}"><sup>
+							</label>
+							<input type="email" name="email" required>
 						</div>
 						@error('email')
-							<div class="alert alert-danger">{{ $message }}
-							</div>
-							@enderror
+						<span class="text-danger">{{ $message }}
+						</span>
+						@enderror
 						<div class="login-item">
-							<label for="password">Ваш пароль <sup><img src="{{ asset('assets/asterisk.png')}}"><sup> </label>
-							<input type="password" name="password" require>
-							
+							<label for="password">Ваш пароль <sup><img src="{{ asset('assets/asterisk.png')}}"><sup>
+							</label>
+							<input type="password" name="password" required>
 						</div>
 						@error('password')
-							<div class="alert alert-danger">{{ $message }}
-							</div>
-							@enderror
+						<span class="text-danger">{{ $message }}
+						</span>
+						@enderror
 						<a href="{{ route('user.registration') }}">Зареєструватися</a>
 						<input type="submit" value="Увійти" name="btn-submit" class="btn-green btn-appoint">
 					</form>
 				</div>
 			</div>
-			
+
 
 		</div>
 	</div>

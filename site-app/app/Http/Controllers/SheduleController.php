@@ -20,11 +20,10 @@ class SheduleController extends Controller
      */
     public function index()
     {
-        $shedules = Shedule::all();
+        $shedules = Shedule::paginate(10);
         $doctors = Doctor::all();
-        $specialities = Speciality::all();
         $ambulatories = Ambulatory::all();
-        return view('admin.shedule.index', compact('shedules', 'doctors', 'specialities', 'ambulatories'));
+        return view('admin.shedule.index', compact('shedules', 'doctors', 'ambulatories'));
     }
 
     /**
@@ -49,7 +48,6 @@ class SheduleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'speciality_id' => 'required',
             'doctor_id' => 'required',
             'ambulatory_id' => 'required',
             'date_start' => 'required|date_format:"m-d-Y"',
@@ -74,9 +72,8 @@ class SheduleController extends Controller
     {
         $shedules = Shedule::find($id);
         $doctors = Doctor::all();
-        $specialities = Speciality::all();
         $ambulatories = Ambulatory::all();
-        return view('admin.shedule.show', compact('shedules', 'doctors', 'specialities', 'ambulatories'));
+        return view('admin.shedule.show', compact('shedules', 'doctors', 'ambulatories'));
     }
 
     /**
@@ -89,9 +86,8 @@ class SheduleController extends Controller
     {
         $shedules = Shedule::find($id);
         $doctors = Doctor::all();
-        $specialities = Speciality::all();
         $ambulatories = Ambulatory::all();
-        return view('admin.shedule.edit', compact('shedules', 'doctors', 'specialities', 'ambulatories'));
+        return view('admin.shedule.edit', compact('shedules', 'doctors', 'ambulatories'));
     }
 
     /**
@@ -104,7 +100,6 @@ class SheduleController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'speciality_id' => 'required',
             'doctor_id' => 'required',
             'ambulatory_id' => 'required',
             'date_start' => 'required|date_format:"m-d-Y"',
@@ -133,6 +128,19 @@ class SheduleController extends Controller
 
     }
 
+    public function sortAmbulatories(Request $request) {
+        $ambulatory_id = $request['ambulatory'];
+        // var_dump($request['ambulatory']);
+        // die();
+        $ambulatories = Ambulatory::all();
+        if($request['ambulatory'] == 0) {
+            return redirect()->route('shedules.index');
+        } else {
+            
+            $shedules = Shedule::orderBy('ambulatory_id', 'asc')->where('ambulatory_id', $ambulatory_id)->paginate(10);
+        }
+        return view('admin.shedule.index', compact('shedules', 'ambulatories', 'ambulatory_id'));
+    }
    
      
 }
@@ -140,4 +148,3 @@ class SheduleController extends Controller
 
 
     
-

@@ -21,48 +21,52 @@
 						<div class="login-item">
 							<label for="name">Ваше ім'я <sup><img src="{{ asset('assets/asterisk.png')}}"><sup> </label>
 							<input type="text" name="name" value="" required>
-							
+
 						</div>
 						@error('name')
-							<div class="alert alert-danger">{{ $message }}
-							</div>
-							@enderror
+						<span class="text-danger">{{ $message }}
+						</span>
+						@enderror
 						<div class="login-item">
-							<label for="phone">Ваш номер телефону <sup><img src="{{ asset('assets/asterisk.png')}}"><sup> </label>
+							<label for="phone">Ваш номер телефону <sup><img
+										src="{{ asset('assets/asterisk.png')}}"><sup> </label>
 							<input type="text" name="phone" required>
-							
+
 						</div>
 						@error('phone')
-							<div class="alert alert-danger">{{ $message }}
-							</div>
-							@enderror
+						<span class="text-danger">{{ $message }}
+						</span>
+						@enderror
 						<div class="login-item">
-							<label for="email">Ваш email <sup><img src="{{ asset('assets/asterisk.png')}}"><sup> </label>
+							<label for="email">Ваш email <sup><img src="{{ asset('assets/asterisk.png')}}"><sup>
+							</label>
 							<input type="email" name="email" required>
-							
+
 						</div>
 						@error('email')
-							<div class="alert alert-danger">{{ $message }}
-							</div>
-							@enderror
+						<span class="text-danger">{{ $message }}
+						</span>
+						@enderror
 						<div class="login-item">
-							<label for="password">Ваш пароль <sup><img src="{{ asset('assets/asterisk.png')}}"><sup> </label>
+							<label for="password">Ваш пароль <sup><img src="{{ asset('assets/asterisk.png')}}"><sup>
+							</label>
 							<input type="password" name="password" required>
 						</div>
 						@error('password')
-							<div class="alert alert-danger">{{ $message }}
-							</div>
-							@enderror
+						<span class="text-danger">{{ $message }}
+						</span>
+						@enderror
 						<div class="login-item">
-							<label for="password_confirmation">Підтвердіть пароль <sup><img src="{{ asset('assets/asterisk.png')}}"><sup> </label>
+							<label for="password_confirmation">Підтвердіть пароль <sup><img
+										src="{{ asset('assets/asterisk.png')}}"><sup> </label>
 							<input type="password" name="password_confirmation" required>
 						</div>
-						
+
 						<input type="submit" value="Зареєструватися" name="btn-submit" class="btn-green btn-appoint">
 					</form>
 				</div>
 			</div>
-			
+
 
 		</div>
 	</div>

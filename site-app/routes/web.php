@@ -42,14 +42,18 @@ Route::get('/appointment/{doctor_id}',[DoctorController::class, 'showOne']);
 Route::get('/online', [DoctorController::class, 'showOnline'])->name('online');
 Route::get('/price', [PriceController::class, 'showAnalise'])->name('price');
 Route::get('/search-r', [PriceController::class, 'search'])->name('price-search');
-Route::get('/getOrders', [OrderController::class, 'sortStatus'])->name('orders-sort');
+Route::get('/get-orders', [OrderController::class, 'sortStatus'])->name('orders-sort');
 Route::get('/cabinet', [UserCabinetController::class, 'showUserData'])->name('user-data');
 Route::get('/cabinet/edit', [UserCabinetController::class, 'editUserData'])->name('edit-user-data');
 Route::get('/appoint-order', [UserCabinetController::class, 'showOrder'])->name('show-user-order');
+Route::get('/get-ambulatories', [SheduleController::class, 'sortAmbulatories'])->name('ambulatories-sort');
+Route::get('/contact', function () {
+	return view('site/contact');
+})->name('contact');
 
-Route::view('/contact', 'site.contact');
+Route::post('/appointment/{doctor_id}', [OrderController::class, 'save'])->name('order-save');
+Route::post('/contact', [MainController::class, 'submitContact'])->name('contact-form');
 
-Route::post('/appointment/{doctor_id}', [OrderController::class, 'save'])->name('order_save');
 Route::put('/cabinet/edit', [UserCabinetController::class, 'updateUserData'])->name('update-user-data');
 
 Route::name('user.')->group(function() {
