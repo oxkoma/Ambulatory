@@ -3,8 +3,9 @@
 
 Шановний/а {{$order->fname}} {{$order->lname}}!
 
-Ваш запис до доктора {{ $doctors[$order->doctor_id-1]->fname }}
-{{ $doctors[$order->doctor_id-1]->lname }}, {{ $order->date }}, в {{ $ambulatories[$order->ambulatory_id]->name }} за
+Ваш запис до доктора {{ $doctor->fname }}
+{{ $doctor->lname }}, {{ $order->date->format('d-m-Y') }}, в
+{{ $ambulatories[$order->ambulatory_id]->name }} за
 адресою {{ $ambulatories[$order->ambulatory_id-1]->address }} було відхилено.
 
 

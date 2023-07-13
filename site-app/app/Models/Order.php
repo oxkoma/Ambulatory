@@ -13,9 +13,11 @@ class Order extends Model
 {
     use HasFactory;
     
+    protected $dates = ['date', 'time'];
+    
     protected $fillable = [
-        'user_id', 'ambulatory_id', 'doctor_id', 'date', 'time',
-        'description', 'lname', 'fname', 'email', 'status_id', 'phone'
+        'user_id', 'ambulatory_id', 'doctor_id', 
+        'date', 'time', 'description', 'lname', 'fname', 'email', 'status_id', 'phone'
     ];
 
     public function ambulatory() {

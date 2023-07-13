@@ -34,10 +34,10 @@ class OrderCreated extends Mailable
      */
     public function build()
     {
-        $doctors = Doctor::all();
+        $doctor = Doctor::where('id', $this->order->doctor_id)->first();
         $ambulatories = Ambulatory::all();
         $subject = 'Ваш запис отримано';
         return $this->subject($subject)->markdown('mails.order-created', 
-            ['order' => $this->order, 'doctors' => $doctors, 'ambulatories' => $ambulatories]);
+            ['order' => $this->order, 'ambulatories' => $ambulatories, 'doctor' => $doctor]);
     }
 }

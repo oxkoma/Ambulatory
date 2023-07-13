@@ -13,6 +13,7 @@ use App\Models\PriceDoctor;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
 use App\Models\DateTime;
+use Carbon\Carbon;
 
 class DoctorController extends Controller
 {
@@ -188,14 +189,18 @@ class DoctorController extends Controller
     }
     
     public function showOne($id) {
+        
         $doctor = Doctor::find($id);
         $specialities = Speciality::all();
         $ambulatories = Ambulatory::all();
         $prices = PriceDoctor::all();
         $shedules = Shedule::all();
+       
+        $todayDate = Carbon::now();
+        $todayDate = Carbon::parse($todayDate);
 
         return 
-            view('site.doctor-one', compact('doctor', 'specialities', 'shedules', 'ambulatories', 'prices'));
+            view('site.doctor-one', compact('doctor', 'specialities', 'shedules', 'ambulatories', 'prices', 'todayDate'));
     }
 
     public function showOnline() {

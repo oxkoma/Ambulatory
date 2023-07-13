@@ -103,9 +103,8 @@
 					<div class="doctor-slot-date">
 						<label for="date">Оберіть дату <sup><img src="{{ asset('assets/asterisk.png')}}"></sup> </label>
 						<input type="date" id="date" name="date" value="{{ old('date') }}"
-							min="{{ $shedules[$doctor->id-1]->date_start }}" max="" required>
-						@error('date')
-						<span class="text-danger">{{ $message }}</span>
+							min="{{ $todayDate->format('Y-m-d') }}" max="" required>
+						@error(' date') <span class="text-danger">{{ $message }}</span>
 						@enderror
 					</div>
 
@@ -116,7 +115,8 @@
 								@foreach ($shedules as $shedule)
 								@if ($shedule->doctor_id == $doctor->id)
 								<option value="{{ $shedule->ambulatory_id }}">
-									{{ $ambulatories[$shedule->ambulatory_id-1]->address }}</option>
+									{{ $shedule->ambulatory->address}}
+								</option>
 								@endif
 								@endforeach
 							</select>
@@ -160,7 +160,6 @@
 							<label for="description">Додатково</label>
 							<textarea name="description" resize="none" value="{{ old('description') }}"></textarea>
 						</div>
-						<!-- <input type="hidden" name="email" value="{{ auth()->user() ? auth()->user()->email : '' }}"> -->
 						<input type="hidden" name="user_id" value="{{ auth()->user()  ? auth()->user()->id : '' }}">
 						<input type="hidden" name="doctor_id" value="{{$doctor->id}}">
 					</div>

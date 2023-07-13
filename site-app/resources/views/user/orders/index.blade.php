@@ -16,11 +16,11 @@
 				<div class="row mx-4 d-flex flex-column">
 					<div class="d-flex flex-row p-2 bd-highlight justify-content-between ">
 						<div class="col-4 mr-5">Дата:</div>
-						<div class="col-8">{{ $order->date }}</div>
+						<div class="col-8">{{ $order->date-format('d-m-Y') }}</div>
 					</div>
 					<div class=" d-flex flex-row p-2 bd-highlight justify-content-between">
 						<div class="col-4 mr-5">Час:</div>
-						<div class="col-8">{{ $order->time }}</div>
+						<div class="col-8">{{ $order->time->format(H:i) }}</div>
 					</div>
 					<div class=" d-flex flex-row p-2 bd-highlight justify-content-between">
 						<div class="col-4 mr-5">Амбулаторія:</div>

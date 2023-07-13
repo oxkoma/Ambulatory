@@ -31,11 +31,11 @@ class RejectOrder extends Mailable
      */
     public function build()
     {
-        $doctors = Doctor::all();
+        $doctor = Doctor::where('id', $this->order->doctor_id)->first();
         $ambulatories = Ambulatory::all();
         $specialities = Speciality::all();
         $subject = 'Запис відхилено';
         return $this->subject($subject)->markdown('mails.reject-order', ['order' => $this->order, 
-        'doctors' => $doctors, 'ambulatories' => $ambulatories, 'specialities' => $specialities]);
+        'doctor' => $doctor, 'ambulatories' => $ambulatories, 'specialities' => $specialities]);
     }
 }

@@ -23,20 +23,22 @@
 			<div class="row col-md-6">
 				<div class="col-xs-12 col-sm-12 col-md-12 ">
 					<div class="form-group d-flex flex-row">
-						<span style="width: 120px;">Дата</span>
-						<input type="date" id="date" name="date" value="{{ $order->date }}">
+						<span class="col-md-3">Дата</span>
+						<input type="date" id="date" class="col-md-6" name="date"
+							value="{{ $order->date->format('Y-m-d') }}">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group d-flex flex-row ">
-						<span style="width: 120px;">Час</span>
-						<input type="time" name="time" value="{{ $order->time }}">
+						<span class="col-md-3">Час</span>
+						<input type="time" name="time" class="col-md-6"
+							value="{{ $order->time ? $order->time->format('H:i:s') : $order->time }}">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group d-flex flex-row ">
-						<span style="width: 120px;">Статус</span>
-						<select name="status_id" id="">
+						<span class="col-md-3">Статус</span>
+						<select name="status_id" id="" class="col-md-6">
 							@foreach($statuses as $status)
 							@if($status->id == $order->status_id)
 							<option value="{{ $status->id }}" selected>{{ $status->status }}</option>
@@ -49,8 +51,8 @@
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group d-flex flex-row ">
-						<span style="width: 120px;">Амбулаторія</span>
-						<select name="ambulatory_id" id="">
+						<span class="col-md-3">Амбулаторія</span>
+						<select name="ambulatory_id" id="" class="col-md-6">
 							@foreach($ambulatories as $ambulatory)
 							@if($ambulatory->id == $order->ambulatory_id)
 							<option value="{{ $ambulatory->id }}" selected>{{ $ambulatory->name }},
@@ -67,8 +69,8 @@
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group d-flex flex-row ">
-						<span style="width: 120px;">Доктор</span>
-						<select name="doctor_id" id="">
+						<span class="col-md-3">Доктор</span>
+						<select name="doctor_id" id="" class="col-md-6">
 							@foreach($doctors as $doctor)
 							@if($doctor->id == $order->doctor_id)
 							<option value="{{ $doctor->id }}" selected>{{ $doctor->fname }}
@@ -85,31 +87,31 @@
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group d-flex flex-row ">
-						<span style="width: 120px;">Ім'я</span>
+						<span class="col-md-3">Ім'я</span>
 						{{ $order->fname }}
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group d-flex flex-row ">
-						<span style="width: 120px;">Прізвище</span>
+						<span class="col-md-3">Прізвище</span>
 						{{ $order->lname }}
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group d-flex flex-row ">
-						<span style="width: 120px;">Телефон</span>
+						<span class="col-md-3">Телефон</span>
 						{{ $order->phone }}
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group d-flex flex-row ">
-						<span style="width: 120px;">Email</span>
+						<span class="col-md-3">Email</span>
 						{{ $order->email }}
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group d-flex flex-row ">
-						<span style="width: 120px;">Опис</span>
+						<span class="col-md-3">Опис</span>
 						{{ $order->description }}
 					</div>
 				</div>

@@ -11,6 +11,9 @@ class Shedule extends Model
 {
     use HasFactory;
 
+    protected $dates = ['date_start', 'date_end', 'time_start', 'time_end'];
+
+    
     protected $fillable = [
         'speciality_id', 'doctor_id', 'ambulatory_id', 'date_start',
         'date_end', 'time_start', 'time_end', 'time_interval'

@@ -54,9 +54,13 @@
 						@else {{ $order->status->status	}}
 						@endif
 					</td>
-					<td> {{ $order->date }}
+					<td> {{ $order->date->format('d-m-Y') }}
 					</td>
-					<td> {{ $order->time }}
+					<td> @if($order->time == '')
+						{{ $order->time  }}
+						@else
+						{{ $order->time->format('H:i')  }}
+						@endif
 					</td>
 					<td> {{ $order->ambulatory->name }}
 					</td>

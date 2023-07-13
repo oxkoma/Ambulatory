@@ -8,7 +8,19 @@
 			{{ session()->get('success') }}
 		</div>
 		@endif
-		<a href="{{ route('doctors.create') }}" class="d-flex justify-content-end">+ Додати розклад</a>
+
+		<!-- <div class="search-doctor d-flex flex-row mb-3">
+			<form name="search-doctor" action="{{ route('search') }}" method="GET"
+				class="select-body d-flex flex-row col-md-12">
+				<div class="d-flex col-md-11">
+					<input type="text" class="search-input form-control" name="s" id="s" value="{{request()->s}}">
+				</div>
+				<div class="d-flex col-md-1">
+					<input type="submit" value="Знайти" class="btn btn-primary">
+				</div>
+			</form>
+		</div> -->
+		<a href="{{ route('shedules.create') }}" class="d-flex justify-content-end">+ Додати розклад</a>
 		<table class="table table-striped text-center" style="width: 100%;">
 			<thead>
 				<tr>
@@ -47,13 +59,13 @@
 					<td> {{ $shedule->doctor->fname }} <br />
 						{{ $shedule->doctor->lname }} {{ $shedule->doctor->mname }}
 					</td>
-					<td> {{ $shedule->date_start }}
+					<td> {{ $shedule->date_start->format('d-m-Y') }}
 					</td>
-					<td> {{ $shedule->date_end }}
+					<td> {{ $shedule->date_end->format('d-m-Y') }}
 					</td>
-					<td> {{ $shedule->time_start }}
+					<td> {{ $shedule->time_start->format('H:i') }}
 					</td>
-					<td> {{ $shedule->time_end }}
+					<td> {{ $shedule->time_end->format('H:i') }}
 					</td>
 					<td> {{ $shedule->time_interval }}
 					</td>

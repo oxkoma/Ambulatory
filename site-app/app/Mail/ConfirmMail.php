@@ -32,11 +32,11 @@ class ConfirmMail extends Mailable
      */
     public function build()
     {
-        $doctors = Doctor::all();
+        $doctor = Doctor::where('id', $this->order->doctor_id)->first();
         $ambulatories = Ambulatory::all();
         $specialities = Speciality::all();
         $subject = 'Зміна статусу';
         return $this->subject($subject)->markdown('mails.confirm-mail', ['order' => $this->order, 
-                'doctors' => $doctors, 'ambulatories' => $ambulatories, 'specialities' => $specialities]);
+                'doctor' => $doctor, 'ambulatories' => $ambulatories, 'specialities' => $specialities]);
     }
 }

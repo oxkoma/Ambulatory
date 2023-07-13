@@ -50,15 +50,15 @@ class SheduleController extends Controller
         $request->validate([
             'doctor_id' => 'required',
             'ambulatory_id' => 'required',
-            'date_start' => 'required|date_format:"m-d-Y"',
-            'date_end' => 'required|date_format:"m-d-Y"',
-            'time_start' => 'required|date_format:"H:i"',
-            'time_end' => 'required|date_format:"H:i"',
+            'date_start' => 'required',
+            'date_end' => 'required',
+            'time_start' => 'required',
+            'time_end' => 'required',
             'time_interval' => 'required|integer',
         ]);
         Shedule::create($request->all());
 
-        return redirect()->route('admin.shedules.index')->with('success', 'Record created');
+        return redirect()->route('shedules.index')->with('success', 'Запис створено');
 
     }
 
@@ -83,11 +83,18 @@ class SheduleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $shedules = Shedule::find($id);
+    {  
+       
+        $shedule = Shedule::find($id);
+        
+        $time_start = Carbon::parse($shedule['time_start']);
+        $timeStart = $time_start->format('H:i');
+        $time_end = Carbon::parse($shedule['time_end']);
+        $timeEnd = $time_end->format('H:i');
+  
         $doctors = Doctor::all();
         $ambulatories = Ambulatory::all();
-        return view('admin.shedule.edit', compact('shedules', 'doctors', 'ambulatories'));
+        return view('admin.shedule.edit', compact('shedule', 'doctors', 'ambulatories', 'timeStart', 'timeEnd'));
     }
 
     /**
@@ -102,15 +109,15 @@ class SheduleController extends Controller
         $request->validate([
             'doctor_id' => 'required',
             'ambulatory_id' => 'required',
-            'date_start' => 'required|date_format:"m-d-Y"',
-            'date_end' => 'required|date_format:"m-d-Y"',
-            'time_start' => 'required|date_format:"H:i"',
-            'time_end' => 'required|date_format:"H:i"',
+            'date_start' => 'required',
+            'date_end' => 'required',
+            'time_start' => 'required',
+            'time_end' => 'required',
             'time_interval' => 'required|integer',
         ]);
         $shedule = Shedule::find($id);
         $shedule->update($request->all());
-        return redirect()->route('shedules.index')->with('success', 'Record updated');
+        return redirect()->route('shedules.index')->with('success', 'Запис оновлено');
 
     }
 
@@ -124,7 +131,7 @@ class SheduleController extends Controller
     {
         $shedule = Shedule::find($id);
         $shedule->delete();
-        return redirect()->route('shedules.index')->with('success', 'Record deleted');
+        return redirect()->route('shedules.index')->with('success', 'Запис видалено');
 
     }
 
