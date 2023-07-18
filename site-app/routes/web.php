@@ -42,11 +42,7 @@ Route::get('/appointment/{doctor_id}',[DoctorController::class, 'showOne']);
 Route::get('/online', [DoctorController::class, 'showOnline'])->name('online');
 Route::get('/price', [PriceController::class, 'showAnalise'])->name('price');
 Route::get('/search-r', [PriceController::class, 'search'])->name('price-search');
-Route::get('/get-orders', [OrderController::class, 'sortStatus'])->name('orders-sort');
-Route::get('/cabinet', [UserCabinetController::class, 'showUserData'])->name('user-data');
-Route::get('/cabinet/edit', [UserCabinetController::class, 'editUserData'])->name('edit-user-data');
-Route::get('/appoint-order', [UserCabinetController::class, 'showOrder'])->name('show-user-order');
-Route::get('/get-ambulatories', [SheduleController::class, 'sortAmbulatories'])->name('ambulatories-sort');
+
 Route::get('/contact', function () {
 	return view('site/contact');
 })->name('contact');
@@ -59,7 +55,6 @@ Route::put('/cabinet/edit', [UserCabinetController::class, 'updateUserData'])->n
 Route::name('user.')->group(function() {
 	Route::view('/admin/home', 'admin/home')->middleware('auth')->name('home-admin');
 	Route::view('/user/home', 'user/home')->middleware('auth')->name('home-user');
-
 	
 	Route::get('/login', function() {
 		if(Auth::check()) {
@@ -87,6 +82,11 @@ Route::name('user.')->group(function() {
 
 	Route::post('/registration', [RegisterController::class,'save']);
 });
+Route::middleware(['auth', 'user'])->group(function(){
+	Route::get('/cabinet', [UserCabinetController::class, 'showUserData'])->name('user-data');
+	Route::get('/cabinet/edit', [UserCabinetController::class, 'editUserData'])->name('edit-user-data');
+	Route::get('/appoint-order', [UserCabinetController::class, 'showOrder'])->name('show-user-order');
+});	
 
 Route::middleware(['auth', 'admin'])->group(function (){
 	Route::resource('orders', OrderController::class);
@@ -96,4 +96,6 @@ Route::middleware(['auth', 'admin'])->group(function (){
 	Route::resource('posts', PostController::class);
 	Route::resource('shedules', SheduleController::class);
 	Route::resource('specialities', SpecialityController::class);
+	Route::get('/status={status}', [OrderController::class, 'sortStatus'])->name('filter-status');
+	Route::get('/get-ambulatories', [SheduleController::class, 'sortAmbulatories'])->name('ambulatories-sort');
 });

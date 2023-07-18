@@ -43,7 +43,7 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'img' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'img' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
             'alt' => 'required',
         ]);
         Post::create($request->all());
@@ -97,11 +97,20 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'img' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'img' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
             'alt' => 'required',
         ]);
         $post = Post::find($id);
         $post->update($request->all());
+        
+        if($request->hasFile('img')) {
+            $extension = $request->file('img')->extension();
+            $fileName = time().'.'.$extension;
+            $path = $request->file('img')->storeAs('post', $fileName);  
+            $post->img = $fileName;
+        }
+        $post->save();
+        
         return redirect()->route('posts.show', $id)->with('success', 'Record updated');
 
     }

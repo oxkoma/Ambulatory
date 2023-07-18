@@ -35,50 +35,55 @@
 	<div class="row employee">
 		<div class="container-fluid">
 			<div class="employee-wrapper">
-				<div class="employee-item">
+				<div class="employee-row">
 					<div class="employee-item-image">
 						<img src="{{ asset('storage/image') }}/{{ $doctor->img }}" alt="{{ $doctor->fname }}">
 					</div>
+					<div class="employee-services">
+						<div class="keywords-item">
+							<div class="keyword">
+								<p>{{ $specialities[$doctor->speciality_id-1]->name }}</p>
+
+								<p class="kw">{{ $doctor->keywords }}</p>
+
+							</div>
+						</div>
+						<div class="price">
+							@foreach($prices as $price)
+							@if ($doctor->speciality_id == $price->speciality_id)
+							<div class="price-item">
+
+								<div class="price-description">
+									{{ $price->name }}
+								</div>
+								<div class="price-value">
+									{{ $price->price }} грн
+								</div>
+							</div>
+							@endif
+							@endforeach
+
+							<!-- <div class="price-detail">
+										<a href="">Всі послуги та ціни<i class="arrow_right"></i></a>
+									</div> -->
+						</div>
+						@if ($doctor->isOnline)
+						<div class="services-button">
+							<a href="{{ route('online') }}" class="btn btn-green">Онлайн-консультація</a>
+						</div>
+						@endif
+					</div>
+				</div>
+
+				<div class="employee-item">
+
 					<div class="employee-item-description">
-						<p>{{ $specialities[$doctor->speciality_id-1]->name }}<br />
-							Кваліфікаційна категорія: {{ $doctor->category }}<br />
+						<p>Кваліфікаційна категорія: {{ $doctor->category }}<br />
 							Стаж: {{ $doctor->experience }} років</p>
 						<div>{!! $doctor->description !!}</div>
 					</div>
 				</div>
-				<div class="employee-services">
-					<div class="keywords-item">
-						<div class="keyword">
-							<p>{{ $specialities[$doctor->speciality_id-1]->name }}</p>
 
-							<p class="kw">{{ $doctor->keywords }}</p>
-
-						</div>
-					</div>
-					<div class="price">
-						@foreach($prices as $price)
-						@if ($doctor->speciality_id == $price->speciality_id)
-						<div class="price-item">
-
-							<div class="price-description">
-								{{ $price->name }}
-							</div>
-							<div class="price-value">
-								{{ $price->price }} грн
-							</div>
-						</div>
-						@endif
-						@endforeach
-
-						<!-- <div class="price-detail">
-										<a href="">Всі послуги та ціни<i class="arrow_right"></i></a>
-									</div> -->
-					</div>
-
-					<div class="services-button">
-						<a href="{{ route('online') }}" class="btn btn-green">Онлайн-консультація</a>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>

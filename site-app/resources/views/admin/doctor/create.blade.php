@@ -24,19 +24,19 @@
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group">
 						<strong>Прізвище:</strong>
-						<input type="text" name="fname" value="" class="form-control">
+						<input type="text" name="fname" value="{{ old('fname') }}" class="form-control">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group">
 						<strong>Ім'я:</strong>
-						<input type="text" name="lname" value="" class="form-control">
+						<input type="text" name="lname" value="{{ old('lname') }}" class="form-control">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group">
 						<strong>По-батькові:</strong>
-						<input type="text" name="mname" value="" class="form-control">
+						<input type="text" name="mname" value="{{ old('mname') }}" class="form-control">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
@@ -54,26 +54,26 @@
 					<div class="form-group">
 						<strong>Опис:</strong><br />
 						<textarea class="form-select w-100" name="description" id="description" rows="3">
-					</textarea>
+						{{ old('description') }}</textarea>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group">
 						<strong>Ключові слова:</strong>
-						<input type="text" name="keywords" value="" class="form-control">
+						<input type="text" name="keywords" value="{{ old('keywords') }}" class="form-control">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group">
 						<strong>Стаж:</strong>
-						<input type="text" name="experience" value="" class="form-control">
+						<input type="text" name="experience" value="{{ old('experience') }}" class="form-control">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group">
 						<strong>Лікарська категорія:</strong>
 
-						<input type="text" name="category" value="" class="form-control">
+						<input type="text" name="category" value="{{ old('category') }}" class="form-control">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">

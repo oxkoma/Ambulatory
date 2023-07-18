@@ -31,7 +31,7 @@
 					</div>
 				</div>
 				@endforeach
-				{{ $doctors->links() }}
+				{{ $doctors->links('site.template-parts.custom-paginate') }}
 				@else
 				<p>Жодного запису не знайдено</p>
 				@endif

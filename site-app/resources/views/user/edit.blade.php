@@ -1,6 +1,7 @@
 @extends('user.home')
 @section('header', 'Редагування даних')
 @section('content')
+<!-- <x-loader></x-loader> -->
 <section>
 	<div class="d-flex justify-content-between mb-5">
 		<a href="{{ route('user-data') }}">Назад</a>

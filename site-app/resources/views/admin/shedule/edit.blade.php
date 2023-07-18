@@ -84,11 +84,11 @@
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group d-flex flex-row ">
 						<span class="col-md-2">Інтервал</span>
-						<input type="text" name="time_interval" class="col-md-3" value="{{ $shedule->time_interval }}">
+						<input type="text" name="time_interval" class="col-md-3" value="{{ old(time_interval) }}">
 
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary mb-3">Зберегти</button>
+				<button type="submit" class="btn mb-3" style="background-color:#17a2b8; color: white;">Зберегти</button>
 			</div>
 		</form>
 	</div>

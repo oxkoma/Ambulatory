@@ -45,32 +45,32 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 ">
 					<div class="form-group d-flex flex-row">
 						<span class="col-md-2">Дата (початок)</span>
-						<input type="date" name="date_start" class="col-md-3" value="">
+						<input type="date" name="date_start" class="col-md-3" value="{{ old('date_start') }}">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12 ">
 					<div class="form-group d-flex flex-row">
 						<span class="col-md-2">Дата (кінець)</span>
-						<input type="date" name="date_end" class="col-md-3" value="">
+						<input type="date" name="date_end" class="col-md-3" value="{{ old('date_end') }}">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group d-flex flex-row ">
 						<span class="col-md-2">Час (початок)</span>
-						<input type="time" name="time_start" class="col-md-3" value="">
+						<input type="time" name="time_start" class="col-md-3" value="{{ old('time_start') }}">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group d-flex flex-row ">
 						<span class="col-md-2">Час (кінець)</span>
-						<input type="time" name="time_end" class="col-md-3" value="">
+						<input type="time" name="time_end" class="col-md-3" value="{{ old('time_end') }}">
 					</div>
 				</div>
 
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group d-flex flex-row ">
 						<span class="col-md-2">Інтервал</span>
-						<input type="text" name="time_interval" class="col-md-3" value="">
+						<input type="text" name="time_interval" class="col-md-3" value="{{ old('time_interva') }}">
 
 					</div>
 				</div>

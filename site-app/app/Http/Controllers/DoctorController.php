@@ -24,7 +24,7 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = Doctor::paginate(15);
+        $doctors = Doctor::paginate(5);
         $specialities = Speciality::all();
 
         return view('admin.doctor.index', compact('doctors', 'specialities'));
@@ -57,7 +57,7 @@ class DoctorController extends Controller
             'description'=>'required',
             'experience'=>'required',
             'category'=>'required',
-            'img' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'img' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
             
         ]);
               
@@ -111,7 +111,6 @@ class DoctorController extends Controller
     public function update(Request $request, $id)
     {
         $doctor = Doctor::find($id);
-
         $request->validate([
             'fname' => 'required',
             'lname' => 'required',
@@ -120,9 +119,16 @@ class DoctorController extends Controller
             'description'=>'required',
             'experience'=>'required',
             'category'=>'required',
-            'img' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'img' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
         ]); 
        
+        if($request->hasFile('img')) {
+            $fileName = time().$request->img->getClientOriginalName();
+            $path = $request->file('img')->storeAs('image', $fileName);
+            $doctor->img = $fileName;       
+        }
+        $doctor->update($request->all());
+        
         if($request->hasFile('img')) {
             $fileName = time().$request->img->getClientOriginalName();
             $path = $request->file('img')->storeAs('image', $fileName);

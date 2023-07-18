@@ -1,10 +1,12 @@
 @extends('admin.home')
 @section('header', 'Лікарі')
 @section('content')
+
 <section>
 	<a href="{{ route('doctors.create') }}" class="d-flex justify-content-end">+ Додати лікаря</a>
 	<div class="wrapper">
 		@if(count($doctors))
+
 		<table class="table table-striped" style="text-align: center;">
 			<thead>
 				<tr>

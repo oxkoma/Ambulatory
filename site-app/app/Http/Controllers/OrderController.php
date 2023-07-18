@@ -130,12 +130,13 @@ class OrderController extends Controller
     public function sortStatus(Request $request) {
         $status_id = $request['status'];
         $statuses = Status::all();
-        if($request['status'] == 0) {
+        if($status_id == 0) {
             return redirect()->route('orders.index');
         } else {
-            
-            $orders = Order::orderBy('date', 'desc')->where('status_id', $status_id)->paginate(10);
+                   
+            $orders = Order::orderBy('date', 'desc')->where('status_id', $status_id)->paginate(5);
         }
         return view('admin.order.index', compact('orders', 'statuses', 'status_id'));
     }
+    
 }

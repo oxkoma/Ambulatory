@@ -115,7 +115,7 @@
 						{{ $order->description }}
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary mb-3">Зберегти</button>
+				<button type="submit" class="btn mb-3" style="background-color:#17a2b8; color: white;">Зберегти</button>
 			</div>
 		</form>
 	</div>

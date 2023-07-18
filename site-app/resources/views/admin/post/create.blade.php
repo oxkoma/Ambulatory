@@ -24,20 +24,20 @@
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group">
 						<strong>Заголовок</strong>
-						<input type="text" name="title" value="" class="form-control">
+						<input type="text" name="title" value="{{ old('title') }}" class="form-control">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group">
 						<strong>Ключові слова</strong>
-						<input type="text" name="keywords" value="" class="form-control">
+						<input type="text" name="keywords" value="{{ old('keywords') }}" class="form-control">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group">
 						<strong>Текст</strong>
 						<textarea class="form-select w-100" name="description" id="description" rows="10">
-					</textarea>
+						{{ old('description') }}</textarea>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-3">
@@ -49,7 +49,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group">
 						<strong>Альтернативний текст до фотографії</strong>
-						<input type="text" name="alt" value="" class="form-control">
+						<input type="text" name="alt" value="{{ old('alt') }}" class="form-control">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12 text-center">

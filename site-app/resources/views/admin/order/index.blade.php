@@ -9,25 +9,28 @@
 		</div>
 		@endif
 		@if(count($orders))
+		<div class="d-flex flex-row">
+			<p>Сортувати: за статусом</p>
+			<form action="{{ route('filter-status', $status_id) }}" method="GET" class="ml-3">
+				@csrf
+				<select name="status" id="status" onchange="this.form.submit()">
+					<option value="0">Всі</option>
+					@foreach($statuses as $status)
+					@if ($status->id == $status_id)
+					<option value="{{ $status->id }}" selected>{{ $status->status }}</option>
+					@else
+					<option value="{{ $status->id }}">{{ $status->status }}</option>
+					@endif
+					@endforeach
+				</select>
+			</form>
+
+		</div>
 		<table class="table table-striped text-center" style="width: 100%;">
 			<thead>
 				<tr>
-					<th></th>
+					<th>#</th>
 					<th>Статус<br />
-						<form action="{{ route('orders-sort') }}" method="GET">
-							@csrf
-							<select name="status" id="status" onchange="this.form.submit()">
-								<option value="0">Всі</option>
-								@foreach($statuses as $status)
-								@if ($status->id == $status_id)
-								<option value="{{ $status->id }}" selected>{{ $status->status }}</option>
-								@else
-								<option value="{{ $status->id }}">{{ $status->status }}</option>
-								@endif
-								@endforeach
-							</select>
-						</form>
-
 					</th>
 					<th>Дата<br />
 					</th>
@@ -48,7 +51,7 @@
 					<td> {{ $order->id }} </td>
 					<td>
 						@if($order->status->id == '1')
-						<strong style="color: green;">
+						<strong style="color: #17a2b8;">
 							{{ $order->status->status }}
 						</strong>
 						@else {{ $order->status->status	}}

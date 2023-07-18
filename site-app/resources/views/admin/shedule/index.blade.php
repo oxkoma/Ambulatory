@@ -9,37 +9,30 @@
 		</div>
 		@endif
 
-		<!-- <div class="search-doctor d-flex flex-row mb-3">
-			<form name="search-doctor" action="{{ route('search') }}" method="GET"
-				class="select-body d-flex flex-row col-md-12">
-				<div class="d-flex col-md-11">
-					<input type="text" class="search-input form-control" name="s" id="s" value="{{request()->s}}">
-				</div>
-				<div class="d-flex col-md-1">
-					<input type="submit" value="Знайти" class="btn btn-primary">
-				</div>
-			</form>
-		</div> -->
-		<a href="{{ route('shedules.create') }}" class="d-flex justify-content-end">+ Додати розклад</a>
+		<div class="d-flex flex-row justify-content-between">
+			<div class="d-flex flex-row">
+				<p>Сортувати: за амбулаторією</p>
+				<form action="{{ route('ambulatories-sort') }}" method="GET">
+					@csrf
+					<select name="ambulatory" id="status" onchange="this.form.submit()" class="ml-3">
+						<option value="0">Всі</option>
+						@foreach($ambulatories as $ambulatory)
+						@if ($ambulatory->id == $ambulatory_id)
+						<option value="{{ $ambulatory->id }}" selected>{{ $ambulatory->name }}</option>
+						@else
+						<option value="{{ $ambulatory->id }}">{{ $ambulatory->name }}</option>
+						@endif
+						@endforeach
+					</select>
+				</form>
+			</div>
+			<a href="{{ route('shedules.create') }}" class="d-flex justify-content-end">+
+				Додати розклад</a>
+		</div>
 		<table class="table table-striped text-center" style="width: 100%;">
 			<thead>
 				<tr>
-					<th>Амбулаторія<br />
-						<form action="{{ route('ambulatories-sort') }}" method="GET">
-							@csrf
-							<select name="ambulatory" id="status" onchange="this.form.submit()">
-								<option value="0">Всі</option>
-								@foreach($ambulatories as $ambulatory)
-								@if ($ambulatory->id == $ambulatory_id)
-								<option value="{{ $ambulatory->id }}" selected>{{ $ambulatory->name }}</option>
-								@else
-								<option value="{{ $ambulatory->id }}">{{ $ambulatory->name }}</option>
-								@endif
-								@endforeach
-							</select>
-						</form>
-
-					</th>
+					<th>Амбулаторія</th>
 					<th>Доктор</th>
 					<th>Дата (початок)</th>
 					<th>Дата (кінець)</th>
@@ -85,8 +78,6 @@
 				@else <p>Жодного запису не знайдено</p>@endif
 			</tbody>
 		</table> {{	$shedules->links('site.template-parts.custom-paginate') }}
-
-
 	</div>
 </section>
 
