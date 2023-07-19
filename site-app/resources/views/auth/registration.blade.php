@@ -20,7 +20,7 @@
 						@csrf
 						<div class="login-item">
 							<label for="name">Ваше ім'я <sup><img src="{{ asset('assets/asterisk.png')}}"><sup> </label>
-							<input type="text" name="name" value="" required>
+							<input type="text" name="name" value="{{ old('name') }}" required>
 
 						</div>
 						@error('name')
@@ -30,17 +30,17 @@
 						<div class="login-item">
 							<label for="phone">Ваш номер телефону <sup><img
 										src="{{ asset('assets/asterisk.png')}}"><sup> </label>
-							<input type="text" name="phone" required>
+							<input type="text" name="phone" value="{{ old('phone') }}" required>
 
 						</div>
 						@error('phone')
 						<span class="text-danger">{{ $message }}
 						</span>
 						@enderror
-						<div class="login-item">
+						<div class=" login-item">
 							<label for="email">Ваш email <sup><img src="{{ asset('assets/asterisk.png')}}"><sup>
 							</label>
-							<input type="email" name="email" required>
+							<input type="email" name="email" value="{{ old('email') }}" required>
 
 						</div>
 						@error('email')

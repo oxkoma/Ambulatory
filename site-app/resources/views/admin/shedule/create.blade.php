@@ -71,7 +71,6 @@
 					<div class="form-group d-flex flex-row ">
 						<span class="col-md-2">Інтервал</span>
 						<input type="text" name="time_interval" class="col-md-3" value="{{ old('time_interva') }}">
-
 					</div>
 				</div>
 				<button type="submit" class="btn btn-primary mb-3">Зберегти</button>

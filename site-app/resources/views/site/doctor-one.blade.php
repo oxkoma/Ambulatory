@@ -109,7 +109,7 @@
 						<label for="date">Оберіть дату <sup><img src="{{ asset('assets/asterisk.png')}}"></sup> </label>
 						<input type="date" id="date" name="date" value="{{ old('date') }}"
 							min="{{ $todayDate->format('Y-m-d') }}" max="" required>
-						@error(' date') <span class="text-danger">{{ $message }}</span>
+						@error('date') <span class="text-danger">{{ $message }}</span>
 						@enderror
 					</div>
 

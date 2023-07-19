@@ -50,8 +50,6 @@ Route::get('/contact', function () {
 Route::post('/appointment/{doctor_id}', [OrderController::class, 'save'])->name('order-save');
 Route::post('/contact', [MainController::class, 'submitContact'])->name('contact-form');
 
-Route::put('/cabinet/edit', [UserCabinetController::class, 'updateUserData'])->name('update-user-data');
-
 Route::name('user.')->group(function() {
 	Route::view('/admin/home', 'admin/home')->middleware('auth')->name('home-admin');
 	Route::view('/user/home', 'user/home')->middleware('auth')->name('home-user');
@@ -86,6 +84,8 @@ Route::middleware(['auth', 'user'])->group(function(){
 	Route::get('/cabinet', [UserCabinetController::class, 'showUserData'])->name('user-data');
 	Route::get('/cabinet/edit', [UserCabinetController::class, 'editUserData'])->name('edit-user-data');
 	Route::get('/appoint-order', [UserCabinetController::class, 'showOrder'])->name('show-user-order');
+	
+	Route::put('/cabinet/edit', [UserCabinetController::class, 'updateUserData'])->name('update-user-data');
 });	
 
 Route::middleware(['auth', 'admin'])->group(function (){
