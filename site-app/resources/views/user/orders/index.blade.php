@@ -9,7 +9,7 @@
 				{{ session()->get('success') }}
 			</div>
 			@endif
-			@if(count($doctors))
+			@if(count($orders))
 
 			@foreach($orders as $order)
 			<div class="container-fluid border-bottom border-info mx-auto mb-5 pb-3">
@@ -20,7 +20,7 @@
 					</div>
 					<div class=" d-flex flex-row p-2 bd-highlight justify-content-between">
 						<div class="col-4 mr-5">Час:</div>
-						<div class="col-8">{{ $order->time->format(H:i) }}</div>
+						<div class="col-8">{{ $order->time->format('H:i') }}</div>
 					</div>
 					<div class=" d-flex flex-row p-2 bd-highlight justify-content-between">
 						<div class="col-4 mr-5">Амбулаторія:</div>

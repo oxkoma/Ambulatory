@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Admin
+class User
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,13 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!auth()->check() || !auth()->user()->is_admin) {
-            return redirect()->route('user.login');
-        }
-   
-        return $next($request);
+        if(auth()->check()) {
+            if(auth()->user()->is_admin == '0') {
+                return $next($request);
+            } else {
+                return redirect()->route('index')->with('У Вас немає прав на цю дію');
+            }
+        } else 
+        return redirect()->route('user.login');
     }
 }

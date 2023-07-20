@@ -81,11 +81,11 @@ Route::name('user.')->group(function() {
 	Route::post('/registration', [RegisterController::class,'save']);
 });
 Route::middleware(['auth', 'user'])->group(function(){
-	Route::get('/cabinet', [UserCabinetController::class, 'showUserData'])->name('user-data');
-	Route::get('/cabinet/edit', [UserCabinetController::class, 'editUserData'])->name('edit-user-data');
-	Route::get('/appoint-order', [UserCabinetController::class, 'showOrder'])->name('show-user-order');
-	
-	Route::put('/cabinet/edit', [UserCabinetController::class, 'updateUserData'])->name('update-user-data');
+			Route::get('/user/cabinet', [UserCabinetController::class, 'showUserData'])->name('user-data');
+			Route::get('/user/cabinet/edit', [UserCabinetController::class, 'editUserData'])->name('edit-user-data');
+			Route::get('/user/appoint-order', [UserCabinetController::class, 'showOrder'])->name('show-user-order');
+			
+			Route::put('/user/cabinet/edit', [UserCabinetController::class, 'updateUserData'])->name('update-user-data');
 });	
 
 Route::middleware(['auth', 'admin'])->group(function (){

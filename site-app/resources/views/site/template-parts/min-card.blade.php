@@ -5,7 +5,7 @@
 						<div class="min-card-header">
 							<img src="{{ asset('/assets/c-bag.png') }}" alt="icon doctor">
 							<h3>Прийом лікарів</h3>
-						</div>						
+						</div>
 						<div class="min-card-items">
 							@foreach ($specialities as $speciality)
 							<div class="min-card-item">
@@ -17,8 +17,8 @@
 							@endforeach
 						</div>
 						<div class="min-card-button">
-							<a href="{{  route('all') }}" class="btn btn-green">Записатися на прийом</a>
-							<a class="btn btn-green" href="{{ route('search-sp') }}">Всі лікарі</a>
+							<a href="{{  route('all') }}" class="btn btn-green">Знайти лікаря</a>
+							<!-- <a class="btn btn-green" href="{{ route('search-sp') }}">Всі лікарі</a> -->
 						</div>
 					</div>
 				</div>

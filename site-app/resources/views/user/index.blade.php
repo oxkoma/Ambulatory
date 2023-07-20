@@ -11,7 +11,7 @@
 			</div>
 			@endif
 			<a href="{{ route('edit-user-data',  $user->id) }}">Редагувати</a>
-			<div class="container-fluid border mx-auto my-3 ">
+			<div class="container-fluid mx-auto my-3 ">
 
 				<div class="row mx-4 d-flex flex-column ">
 					<div class="d-flex flex-row p-2 bd-highlight justify-content-between ">

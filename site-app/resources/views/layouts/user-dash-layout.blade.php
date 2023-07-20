@@ -12,6 +12,9 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
+		<div class="loader">
+			<img src="{{ asset('assets/rings.svg') }}" alt="">
+		</div>
 
 		@include('layouts.navbar-user')
 

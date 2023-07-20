@@ -20,7 +20,7 @@
 						@csrf
 						<div class="login-item">
 							<label for="name">Ваше ім'я <sup><img src="{{ asset('assets/asterisk.png')}}"><sup> </label>
-							<input type="text" name="name" value="{{ old('name') }}" required>
+							<input type="text" name="name" value="{{ old('name') }}">
 
 						</div>
 						@error('name')
@@ -30,7 +30,7 @@
 						<div class="login-item">
 							<label for="phone">Ваш номер телефону <sup><img
 										src="{{ asset('assets/asterisk.png')}}"><sup> </label>
-							<input type="text" name="phone" value="{{ old('phone') }}" required>
+							<input type="text" name="phone" value="{{ old('phone') }}">
 
 						</div>
 						@error('phone')
@@ -40,7 +40,7 @@
 						<div class=" login-item">
 							<label for="email">Ваш email <sup><img src="{{ asset('assets/asterisk.png')}}"><sup>
 							</label>
-							<input type="email" name="email" value="{{ old('email') }}" required>
+							<input type="email" name="email" value="{{ old('email') }}">
 
 						</div>
 						@error('email')
@@ -50,7 +50,7 @@
 						<div class="login-item">
 							<label for="password">Ваш пароль <sup><img src="{{ asset('assets/asterisk.png')}}"><sup>
 							</label>
-							<input type="password" name="password" required>
+							<input type="password" name="password">
 						</div>
 						@error('password')
 						<span class="text-danger">{{ $message }}
@@ -59,9 +59,12 @@
 						<div class="login-item">
 							<label for="password_confirmation">Підтвердіть пароль <sup><img
 										src="{{ asset('assets/asterisk.png')}}"><sup> </label>
-							<input type="password" name="password_confirmation" required>
+							<input type="password" name="password_confirmation">
 						</div>
-
+						@error('password_confirmation')
+						<span class="text-danger">{{ $message }}
+						</span>
+						@enderror
 						<input type="submit" value="Зареєструватися" name="btn-submit" class="btn-green btn-appoint">
 					</form>
 				</div>

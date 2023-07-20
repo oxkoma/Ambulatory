@@ -1,7 +1,7 @@
 @extends('user.home')
 @section('header', 'Редагування даних')
 @section('content')
-<!-- <x-loader></x-loader> -->
+
 <section>
 	<div class="d-flex justify-content-between mb-5">
 		<a href="{{ route('user-data') }}">Назад</a>
@@ -22,7 +22,8 @@
 			@csrf
 			@method('PUT')
 
-			<div class="row col-md-6">
+			<div class="row col-md-8 ml-5">
+
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group">
 						<strong>Ім'я:</strong>
@@ -44,6 +45,8 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 text-center">
 					<button type="submit" class="btn btn-primary mb-3">Зберегти</button>
 				</div>
+
+
 			</div>
 		</form>
 	</div>

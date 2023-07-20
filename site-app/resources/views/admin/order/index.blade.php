@@ -8,7 +8,7 @@
 			{{ session()->get('success') }}
 		</div>
 		@endif
-		@if(count($orders))
+
 		<div class="d-flex flex-row">
 			<p>Сортувати: за статусом</p>
 			<form action="{{ route('filter-status', $status_id) }}" method="GET" class="ml-3">
@@ -26,6 +26,7 @@
 			</form>
 
 		</div>
+		@if(count($orders))
 		<table class="table table-striped text-center" style="width: 100%;">
 			<thead>
 				<tr>

@@ -45,7 +45,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-3">
 					<div class="form-group d-flex flex-column ">
 						<strong class="py-2">Змінити фото </strong>
-						<img src="{{asset('storage/image')}}/{{ $post->img}}" alt="{{ $post->alt }}"
+						<img src="{{asset('storage/post')}}/{{ $post->img}}" alt="{{ $post->alt }}"
 							style="width: 150px;">
 						<input type="file" name="img" class="form-control">
 					</div>

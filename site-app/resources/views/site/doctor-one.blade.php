@@ -117,14 +117,21 @@
 						<span>Оберіть амбулаторію <sup><img src="{{ asset('assets/asterisk.png')}}"></sup> </span>
 						<div class="doctor-slot-select-address">
 							<select name="ambulatory_id" id="ambulatory_id" class="slot-select-address">
+								<option value="">Оберіть амбулаторію</option>
 								@foreach ($shedules as $shedule)
 								@if ($shedule->doctor_id == $doctor->id)
-								<option value="{{ $shedule->ambulatory_id }}">
+								<option value="{{ $shedule->ambulatory_id }}" style="font-weight:600">
+									{{ $shedule->ambulatory->address}}
+								</option>
+								@else
+								<option value="{{ $shedule->ambulatory_id }}" disabled>
 									{{ $shedule->ambulatory->address}}
 								</option>
 								@endif
 								@endforeach
 							</select>
+							@error('ambulatory_id') <span class="text-danger">{{ $message }}</span>
+							@enderror
 						</div>
 					</div>
 					<div class="doctor-slot-contact">
